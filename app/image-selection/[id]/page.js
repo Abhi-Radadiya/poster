@@ -1,10 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useImageData } from "@/context/ImageDataContext";
 import html2canvas from "html2canvas";
 import Button from "@/components/Button/Button";
 import { Frame1 } from "@/components/Frames/Frame";
+import MakeLoginPopup from "../components/MakeLoginPopup/MakeLoginPopup";
+import Navbar from "../components/Navbar";
+import SelectedImageSection from "../components/SelectedImageSection";
+import RecommendationSection from "../components/RecommendationSection";
 
 export default function Page() {
     const { imageData } = useImageData();
@@ -30,16 +34,21 @@ export default function Page() {
         }
     };
 
+    const [showLoginPopup, setShowLoginPopup] = useState(true);
+
+    useEffect(() => {
+        const token = localStorage?.getItem("authToken");
+
+        setShowLoginPopup(!token);
+    }, []);
+
     return (
         <>
-            <Button label="Download" onClick={handleClickDownload} />
+            <Navbar handleClickDownload={handleClickDownload} />
+            <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
+            <RecommendationSection imageDetails={imageData} />
 
-            <div className="w-full flex justify-center mb-4">
-                <div className="relative h-[320px] w-[320px] bg-white" ref={sectionRef}>
-                    {imageData?.selectedImage?.url && <img alt="x" src={imageData?.selectedImage?.url} className="absolute top-0" />}
-                    <Frame1 />
-                </div>
-            </div>
+            {showLoginPopup && <MakeLoginPopup />}
         </>
     );
 }

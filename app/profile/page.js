@@ -7,23 +7,25 @@ import Email from "@/assets/email.svg";
 import Call from "@/assets/call.svg";
 import Grid from "@/assets/grid.svg";
 import Lock from "@/assets/lock.svg";
-import RightArrowIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
-import { Frame1, Frame2, Frame3, Frame4 } from "@/components/Frames/Frame";
+import { Frame1, Frame2, Frame3, Frame4, Frame5, Frame6 } from "@/components/Frames/Frame";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export default function Page() {
     const { push } = useRouter();
 
+    const frameDetails = useSelector((state) => state.frame.data);
+
     return (
         <>
             <div className="px-4 bg-neutral-50">
-                <div className="flex flex-row justify-between w-full sticky top-0 py-5 bg-white">
+                <div className="flex flex-row justify-between w-full sticky top-0 pt-5 pb-3 bg-white">
                     <span className="font-medium text-neutral-700">Business Profile</span>
                     <RedirectIcon />
                 </div>
 
-                <div className="flex flex-row items-center gap-3 mt-10">
+                <div className="flex flex-row items-center gap-3 mt-5">
                     <Image src={poster} className="rounded-xl h-16 w-16" alt="img" />
 
                     <div className="flex flex-col gap-1">
@@ -49,7 +51,7 @@ export default function Page() {
                 </Link>
             </div>
 
-            <div className="px-4 pt-8 flex flex-row justify-between w-full items-center">
+            <div className="px-4 pt-3 flex flex-row justify-between w-full items-center">
                 <div className="flex flex-row gap-1.5 items-center">
                     <Grid className="rounded-full bg-neutral-50 p-5 h-3 w-3" />
                     <div className="">
@@ -61,27 +63,27 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-
-                <div className="flex flex-row items-center">
-                    <span className="mr-1 tracking-wider text-neutral-500 text-sm">View All</span>
-                    <div className="rounded-full h-5 w-5 bg-white flex justify-center items-center">
-                        <RightArrowIcon className="stroke-neutral-500" />
-                    </div>
-                </div>
             </div>
 
-            {/* <div className="flex flex-row overflow-auto w-[100vw]">
-                <Frame1 className="w-[30vw] h-[25vh]" />
-                <Frame2 className="w-[30vw] h-[25vh]" />
-                <Frame3 className="w-[30vw] h-[25vh]" />
-                <Frame4 className="w-[30vw] h-[25vh]" />
-            </div> */}
-
-            <div className="flex flex-row overflow-x-auto whitespace-nowrap w-[100vw] gap-4 mt-4 ml-4">
-                <Frame1 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/1")} />
-                <Frame2 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/2")} />
-                <Frame3 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/3")} />
-                <Frame4 className="w-[30vw] h-[25vh] flex-shrink-0" onClick={() => push("/frame/4")} />
+            <div className="flex flex-row overflow-x-auto gap-4 mt-4 pb-32 px-4">
+                <div className="scale-[1]">
+                    <Frame1 onClick={() => push("/frame/1")} {...frameDetails} />
+                </div>
+                <div className="scale-[1]">
+                    <Frame2 onClick={() => push("/frame/2")} {...frameDetails} />
+                </div>
+                <div className="scale-[1]">
+                    <Frame3 onClick={() => push("/frame/3")} {...frameDetails} />
+                </div>
+                <div className="scale-[1]">
+                    <Frame4 onClick={() => push("/frame/4")} {...frameDetails} />
+                </div>
+                <div className="scale-[1]">
+                    <Frame5 onClick={() => push("/frame/5")} {...frameDetails} />
+                </div>
+                <div className="scale-[1]">
+                    <Frame6 onClick={() => push("/frame/6")} {...frameDetails} />
+                </div>
             </div>
         </>
     );

@@ -5,11 +5,11 @@ import WebIcon from "@/assets/web.svg";
 
 const LocationIcon = ({ fill = "#000000", className, height = 24, width = 24 }) => (
     <svg className={className} fill={fill} height={height} width={width} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
             <title>location-filled</title>
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="location-outline" fill={fill} transform="translate(106.666667, 42.666667)">
                     <path
                         d="M149.333333,7.10542736e-15 C231.807856,7.10542736e-15 298.666667,66.8588107 298.666667,149.333333 C298.666667,176.537017 291.413333,202.026667 278.683512,224.008666 C270.196964,238.663333 227.080238,313.32711 149.333333,448 C71.5864284,313.32711 28.4697022,238.663333 19.9831547,224.008666 C7.25333333,202.026667 2.84217094e-14,176.537017 2.84217094e-14,149.333333 C2.84217094e-14,66.8588107 66.8588107,7.10542736e-15 149.333333,7.10542736e-15 Z M149.333333,85.3333333 C113.987109,85.3333333 85.3333333,113.987109 85.3333333,149.333333 C85.3333333,184.679557 113.987109,213.333333 149.333333,213.333333 C184.679557,213.333333 213.333333,184.679557 213.333333,149.333333 C213.333333,113.987109 184.679557,85.3333333 149.333333,85.3333333 Z"
@@ -33,7 +33,7 @@ const EmailIcon = ({ fill = "#000000", height = 24, width = 24 }) => (
         className="h-[6px] w-[6px]"
     >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
             <path
                 d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
@@ -43,13 +43,22 @@ const EmailIcon = ({ fill = "#000000", height = 24, width = 24 }) => (
     </svg>
 );
 
+const formatPhoneNumber = (number) => {
+    if (number.length === 10) {
+        number = "91" + number; // Add country code if missing
+    }
+    // Format the number with a space after the first two digits and after the fifth digit
+    const formattedNumber = number.replace(/(\d{2})(\d{5})(\d{5})/, "+$1 $2 $3");
+    return formattedNumber;
+};
+
 export function Frame1(props) {
     const {
         className = "w-[320px] h-[320px] mx-auto flex",
         onClick,
-        number = "+91 12345 79862",
+        mobileNumber = "1234579862",
         email = "example@mail.com",
-        webSite = "www.example.com",
+        website = "www.example.com",
         address = "Enter your address",
     } = props;
 
@@ -79,7 +88,7 @@ export function Frame1(props) {
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
-                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                             <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
                                                 <g id="icons" transform="translate(56.000000, 160.000000)">
                                                     <path
@@ -93,7 +102,7 @@ export function Frame1(props) {
                                 </svg>
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px]">{number}</div>
+                            <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5">
@@ -101,7 +110,7 @@ export function Frame1(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">{webSite}</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
                     </div>
 
@@ -120,7 +129,14 @@ export function Frame1(props) {
 }
 
 export function Frame2(props) {
-    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+    const {
+        className = "w-[320px] h-[320px] mx-auto flex",
+        onClick,
+        mobileNumber = "1234579862",
+        email = "example@mail.com",
+        website = "www.example.com",
+        address = "Enter your address",
+    } = props;
 
     return (
         <>
@@ -140,7 +156,7 @@ export function Frame2(props) {
                                     className="h-[6px] w-[6px]"
                                 >
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
@@ -149,7 +165,7 @@ export function Frame2(props) {
                                     </g>
                                 </svg>
                             </span>
-                            <span className="text-[1.5px] font-bold pt-[1px] text-white">adarsh_fab132@yahoo.com</span>
+                            <span className="text-[1.5px] font-bold pt-[1px] text-white">{email}</span>
                         </div>
 
                         <div className="bg-white h-5 w-2" style={{ transform: "skew(16deg)" }} />
@@ -159,7 +175,7 @@ export function Frame2(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#FFFFFF" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold text-white">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold text-white">{website}</div>
                         </div>
 
                         <div className="bg-white h-5 w-2" style={{ transform: "skew(16deg)" }} />
@@ -169,7 +185,7 @@ export function Frame2(props) {
                                 <CallIcon className="h-[6px] w-[6px]" fill="#000000" stroke="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px] text-white">+91 98254 48953</div>
+                            <div className="text-[1.5px] font-bold pt-[1px] text-white">{formatPhoneNumber(mobileNumber)}</div>
                         </div>
                     </div>
 
@@ -178,9 +194,7 @@ export function Frame2(props) {
                             <div className="border-[0.5px] border-black rounded-full p-0.5">
                                 <LocationIcon height={6} width={6} />
                             </div>
-                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold text-black">
-                                Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA
-                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold text-black">{address}</div>
                         </div>
                     </div>
                 </div>
@@ -190,7 +204,14 @@ export function Frame2(props) {
 }
 
 export function Frame3(props) {
-    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+    const {
+        className = "w-[320px] h-[320px] mx-auto flex",
+        onClick,
+        mobileNumber = "1234579862",
+        email = "example@mail.com",
+        website = "www.example.com",
+        address = "Enter your address",
+    } = props;
 
     return (
         <>
@@ -210,7 +231,7 @@ export function Frame3(props) {
                                     className="h-[6px] w-[6px]"
                                 >
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
@@ -219,7 +240,7 @@ export function Frame3(props) {
                                     </g>
                                 </svg>
                             </span>
-                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">{email}</span>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5">
@@ -236,7 +257,7 @@ export function Frame3(props) {
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
-                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                             <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
                                                 <g id="icons" transform="translate(56.000000, 160.000000)">
                                                     <path
@@ -250,7 +271,7 @@ export function Frame3(props) {
                                 </svg>
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                            <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 bg-black text-white rounded-l-xl pr-1.5 pl-1 py-1">
@@ -258,7 +279,7 @@ export function Frame3(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
                     </div>
 
@@ -267,7 +288,7 @@ export function Frame3(props) {
                             <div className="border-black border-[0.5px] rounded-full p-0.5">
                                 <LocationIcon height={6} width={6} />
                             </div>
-                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">{address}</div>
                         </div>
                     </div>
                 </div>
@@ -277,7 +298,14 @@ export function Frame3(props) {
 }
 
 export function Frame4(props) {
-    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+    const {
+        className = "w-[320px] h-[320px] mx-auto flex",
+        onClick,
+        mobileNumber = "1234579862",
+        email = "example@mail.com",
+        website = "www.example.com",
+        address = "Enter your address",
+    } = props;
 
     return (
         <>
@@ -293,7 +321,7 @@ export function Frame4(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
                     </div>
 
@@ -311,7 +339,7 @@ export function Frame4(props) {
                                     className="h-[6px] w-[6px]"
                                 >
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
@@ -320,7 +348,7 @@ export function Frame4(props) {
                                     </g>
                                 </svg>
                             </span>
-                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">{email}</span>
                         </div>
 
                         <div className="bg-white h-5 -my-1 w-2.5 ml-2" style={{ transform: "skew(16deg)" }} />
@@ -330,7 +358,7 @@ export function Frame4(props) {
                                 <CallIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                            <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div>
                         </div>
                     </div>
 
@@ -339,7 +367,7 @@ export function Frame4(props) {
                             <div className="border-black border-[0.5px] rounded-full p-0.5">
                                 <LocationIcon height={6} width={6} />
                             </div>
-                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">{address}</div>
                         </div>
                     </div>
                 </div>
@@ -349,19 +377,26 @@ export function Frame4(props) {
 }
 
 export function Frame5(props) {
-    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+    const {
+        className = "w-[320px] h-[320px] mx-auto flex",
+        onClick,
+        mobileNumber = "1234579862",
+        email = "example@mail.com",
+        website = "www.example.com",
+        address = "Enter your address",
+    } = props;
 
     return (
         <>
-            <div className={`border border-neutral-300 relative bg-white ${className}`} onClick={onClick}>
+            <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
                 <div className="absolute bottom-0 w-full">
-                    <div className="flex flex-row items-center w-full bg-white text-black py-1">
+                    <div className="flex flex-row items-center w-full text-black py-1">
                         <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
@@ -369,11 +404,11 @@ export function Frame5(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
                     </div>
 
-                    <div className="flex flex-row items-center w-full bg-white text-black">
+                    <div className="flex flex-row items-center w-full text-black">
                         <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
                                 <svg
@@ -387,7 +422,7 @@ export function Frame5(props) {
                                     className="h-[6px] w-[6px]"
                                 >
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
@@ -396,7 +431,7 @@ export function Frame5(props) {
                                     </g>
                                 </svg>
                             </span>
-                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">{email}</span>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
@@ -413,7 +448,7 @@ export function Frame5(props) {
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
-                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                             <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
                                                 <g id="icons" transform="translate(56.000000, 160.000000)">
                                                     <path
@@ -427,7 +462,7 @@ export function Frame5(props) {
                                 </svg>
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                            <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div>
                         </div>
                     </div>
 
@@ -436,7 +471,7 @@ export function Frame5(props) {
                             <div className="border-white border-[0.5px] rounded-full p-0.5">
                                 <LocationIcon fill="#FFFFFF" height={6} width={6} />
                             </div>
-                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA</div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold">{address}</div>
                         </div>
                     </div>
                 </div>
@@ -446,11 +481,18 @@ export function Frame5(props) {
 }
 
 export function Frame6(props) {
-    const { className = "w-[320px] h-[320px] mx-auto flex", onClick } = props;
+    const {
+        className = "w-[320px] h-[320px] mx-auto flex",
+        onClick,
+        mobileNumber = "1234579862",
+        email = "example@mail.com",
+        website = "www.example.com",
+        address = "Enter your address",
+    } = props;
 
     return (
         <>
-            <div className={`border border-neutral-300 relative bg-white ${className}`} onClick={onClick}>
+            <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
                 <div className="absolute bottom-0 w-full">
                     <div className="flex flex-row items-center w-full py-1 gap-2">
                         <div className="flex flex-row items-center gap-0.5 w-1/2 pl-4 bg-black text-white py-1 rounded-r-xl">
@@ -458,7 +500,7 @@ export function Frame6(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#FFFFFF" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 w-1/2 bg-black pl-2 text-white py-1 rounded-l-xl">
@@ -466,7 +508,7 @@ export function Frame6(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">www.adarshfabrication.com</div>
+                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
                         </div>
                     </div>
 
@@ -484,7 +526,7 @@ export function Frame6(props) {
                                     className="h-[6px] w-[6px]"
                                 >
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
                                         <path
                                             d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
@@ -493,7 +535,7 @@ export function Frame6(props) {
                                     </g>
                                 </svg>
                             </span>
-                            <span className="text-[1.5px] font-bold pt-[1px]">adarsh_fab132@yahoo.com</span>
+                            <span className="text-[1.5px] font-bold pt-[1px]">{email}</span>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 w-1/2 bg-black pl-2 text-white py-1 rounded-l-xl">
@@ -501,7 +543,7 @@ export function Frame6(props) {
                                 <CallIcon className="h-[6px] w-[6px]" fill="#000000" stroke="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px]">+91 98254 48953</div>
+                            <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div>
                         </div>
                     </div>
 
@@ -510,9 +552,7 @@ export function Frame6(props) {
                             <div className="border-[0.5px] border-black rounded-full p-0.5">
                                 <LocationIcon height={6} width={6} />
                             </div>
-                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold text-black">
-                                Krutika Apt., Opp. pipardiwala school, Sardar patel Rd., Ramnagar, Rander, Surat, INDIA
-                            </div>
+                            <div className="text-[1.5px] pt-[1px] ml-1 font-bold text-black">{address}</div>
                         </div>
                     </div>
                 </div>

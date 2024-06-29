@@ -23,7 +23,6 @@ const BottomNav = () => {
         page === "/edit-business-details" ||
         page === "/generate-ticket" ||
         page === "/available-plan" ||
-        page === "/profile" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
         page.startsWith("/image-selection/") ||
@@ -41,6 +40,14 @@ const BottomNav = () => {
             <TrayItem
                 link="home"
                 label="home"
+                icon={<HomeIcon stroke={activeTab === "home" ? "#FFFFFF" : "#000000"} fill={activeTab !== "home" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
+                isActive={activeTab === "home"}
+                handleIconClick={handleIconClick}
+            />
+
+            <TrayItem
+                link="sign-up"
+                label="login"
                 icon={<HomeIcon stroke={activeTab === "home" ? "#FFFFFF" : "#000000"} fill={activeTab !== "home" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
                 isActive={activeTab === "home"}
                 handleIconClick={handleIconClick}

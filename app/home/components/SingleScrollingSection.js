@@ -14,8 +14,6 @@ import Gallery from "@/assets/gallery.svg";
 export default function SingleScrollingSection(props) {
     const { title, imageData } = props;
 
-    console.log("imageData ==> ", imageData);
-
     const { setImageData } = useImageData();
 
     const handleImageClick = (image) => {

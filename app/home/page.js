@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Header from "./components/Header";
 import TrendingBanners from "./components/TrendingBanners";
 import ThisMonthPoster from "./components/ThisMonthPoster";
@@ -12,16 +13,16 @@ import { axiosInstance } from "@/APIHelper/axios";
 
 export default function Home() {
     const [data, setData] = useState([]);
+    const dispatch = useDispatch();
 
     useInitializeDeviceId();
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [dispatch]);
 
     const fetchData = async () => {
         try {
-            // api/posters
             const response = await axiosInstance.get("/posters");
             setData(response.data);
         } catch (error) {

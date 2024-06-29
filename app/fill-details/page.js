@@ -16,9 +16,7 @@ export default function Page() {
 
     const saveDetails = async () => {
         try {
-            const response = await axiosInstance.post("/auth/user-registration", { details });
-
-            console.log("response ==> ", response);
+            const response = await axiosInstance.post("/auth/user-registration", { ...details });
 
             if (response?.status == "200") {
                 push("/");
