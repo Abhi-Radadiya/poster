@@ -40,40 +40,62 @@ const BottomNav = () => {
             <TrayItem
                 link="home"
                 label="home"
-                icon={<HomeIcon stroke={activeTab === "home" ? "#FFFFFF" : "#000000"} fill={activeTab !== "home" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
-                isActive={activeTab === "home"}
+                icon={
+                    <HomeIcon
+                        stroke={activeTab.toLowerCase() === "home" ? "#FFFFFF" : "#000000"}
+                        fill={activeTab.toLowerCase() !== "home" ? "#FFFFFF" : "#000000"}
+                        height={24}
+                        width={24}
+                    />
+                }
+                isActive={activeTab.toLowerCase() === "home"}
                 handleIconClick={handleIconClick}
             />
 
-            <TrayItem
-                link="sign-up"
-                label="login"
-                icon={<HomeIcon stroke={activeTab === "home" ? "#FFFFFF" : "#000000"} fill={activeTab !== "home" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
-                isActive={activeTab === "home"}
-                handleIconClick={handleIconClick}
-            />
-
-            <TrayItem
-                link="customize/1"
-                label="Custom"
-                icon={<GalleryIcon stroke={activeTab === "Custom" ? "#FFFFFF" : "#000000"} fill={activeTab !== "Custom" ? "#FFFFFF" : "#000000"} height={24} width={24} />}
-                isActive={activeTab === "Custom"}
-                handleIconClick={handleIconClick}
-            />
+            <div className="mt-[4px]">
+                <TrayItem
+                    link="customize/1"
+                    label="Custom"
+                    icon={
+                        <GalleryIcon
+                            stroke={activeTab.toLowerCase() === "custom" ? "#FFFFFF" : "#000000"}
+                            fill={activeTab.toLowerCase() !== "custom" ? "#FFFFFF" : "#000000"}
+                            height={24}
+                            width={24}
+                        />
+                    }
+                    isActive={activeTab.toLowerCase() === "custom"}
+                    handleIconClick={handleIconClick}
+                />
+            </div>
 
             <TrayItem
                 link="profile"
                 label="profile"
-                icon={<ProfileIcon stroke={activeTab === "profile" ? "#414042" : "#BCBEC0"} height={24} width={24} />}
-                isActive={activeTab === "profile"}
+                icon={
+                    <ProfileIcon
+                        stroke={activeTab.toLowerCase() === "profile" ? "#FFFFFF" : "#000000"}
+                        fill={activeTab.toLowerCase() !== "profile" ? "#FFFFFF" : "#000000"}
+                        height={28}
+                        width={28}
+                    />
+                }
+                isActive={activeTab.toLowerCase() === "profile"}
                 handleIconClick={handleIconClick}
             />
 
             <TrayItem
                 link="menu"
                 label="menu"
-                icon={<MenuIcon stroke={activeTab === "menu" ? "#414042" : "#BCBEC0"} height={24} width={24} />}
-                isActive={activeTab === "menu"}
+                icon={
+                    <MenuIcon
+                        stroke={activeTab.toLowerCase() === "menu" ? "#FFFFFF" : "#000000"}
+                        fill={activeTab.toLowerCase() !== "menu" ? "#FFFFFF" : "#000000"}
+                        height={24}
+                        width={24}
+                    />
+                }
+                isActive={activeTab.toLowerCase() === "menu"}
                 handleIconClick={handleIconClick}
             />
         </div>

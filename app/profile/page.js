@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import RedirectIcon from "@/assets/redirect.svg";
+import ShareIcon from "@/assets/share.svg";
 import poster from "@/assets/demo-poster-header.jpg";
 import Image from "next/image";
 import Email from "@/assets/email.svg";
@@ -19,13 +20,13 @@ export default function Page() {
 
     return (
         <>
-            <div className="px-4 bg-neutral-50">
-                <div className="flex flex-row justify-between w-full sticky top-0 pt-5 pb-3 bg-white">
-                    <span className="font-medium text-neutral-700">Business Profile</span>
-                    <RedirectIcon />
-                </div>
+            <div className="flex flex-row justify-between w-full sticky top-0 pt-5 pb-3 px-4 bg-white">
+                <span className="font-medium text-neutral-700">Business Profile</span>
+                <ShareIcon width={20} height={20} />
+            </div>
 
-                <div className="flex flex-row items-center gap-3 mt-5">
+            <div className="px-4 bg-neutral-50">
+                <div className="flex flex-row items-center gap-3 pt-5">
                     <Image src={poster} className="rounded-xl h-16 w-16" alt="img" />
 
                     <div className="flex flex-col gap-1">
@@ -42,7 +43,7 @@ export default function Page() {
 
                 <div className="flex flex-row items-center gap-2 mt-4">
                     {/* fill */}
-                    <Call className="h-4 w-4" />
+                    <Call className="h-4 w-4" fill="#000000" stroke="#000000" />
                     <span className="text-neutral-600 font-normal text-[13px]">7485964163</span>
                 </div>
 

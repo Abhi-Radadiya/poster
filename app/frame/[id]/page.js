@@ -1,17 +1,20 @@
+/* eslint-disable no-prototype-builtins */
 "use client";
 
 import { Frame1, Frame2, Frame3, Frame4, Frame5, Frame6 } from "@/components/Frames/Frame";
 import React, { useEffect, useRef, useState } from "react";
 import BackIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
-import Input from "@/app/edit-profile/Component/Input";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "lodash";
+import Button from "@/components/Button/Button";
+import { Input } from "@/components/InputField/Input";
+import { axiosInstance } from "@/APIHelper/axios";
+import { useRouter } from "next/navigation";
+import { fetchFrameDetail } from "@/store/detailsSlice";
 
 export default function Page({ params }) {
     const { id } = params;
-
-    console.log("id ==> ", id);
 
     const sectionRef = useRef();
 
@@ -19,15 +22,47 @@ export default function Page({ params }) {
 
     const frameDetails = useSelector((state) => state.frame.data);
 
-    // http://192.168.43.147:3000/frame/1
+    const { push } = useRouter();
 
     useEffect(() => {
-        !isEmpty(frameDetails) && setDetails(frameDetails);
+        !isEmpty(frameDetails) &&
+            setDetails({
+                mobileNumber: frameDetails.mobileNumber,
+                email: frameDetails.email,
+                website: frameDetails.website,
+                address: frameDetails.address,
+            });
     }, [frameDetails]);
 
     const frames = { 1: Frame1, 2: Frame2, 3: Frame3, 4: Frame4, 5: Frame5, 6: Frame6 };
 
     const ComponentToRender = frames[id];
+
+    const dispatch = useDispatch();
+
+    const handleSave = async () => {
+        try {
+            const response = await axiosInstance.put("/frames/update-details", { ...details });
+            if (response.status === 200) {
+                push("/profile");
+                dispatch(fetchFrameDetail());
+            }
+        } catch (error) {
+            console.log("error : ", error);
+        }
+    };
+
+    const [hasLimitAddress, setHasLimitAddress] = useState(false);
+
+    const setAddress = (address) => {
+        if (address.length < 65) {
+            setDetails((prevState) => ({ ...prevState, address }));
+            setHasLimitAddress(false);
+            return;
+        }
+
+        setHasLimitAddress(true);
+    };
 
     return (
         <>
@@ -41,23 +76,84 @@ export default function Page({ params }) {
                 </div>
             </div>
 
-            <div className="p-4 gap-2 space-y-2">
-                {/* name, email, webSite, address */}
-
-                <ComponentToRender sectionRef={sectionRef} number={details.number} email={details.email} webSite={details.website} address={details.address} />
-
-                {/* <Frame1 sectionRef={sectionRef} number={details.mobileNumber} email={details.email} webSite={details.webSite} address={details.address} />
-                <Frame2 sectionRef={sectionRef} number={details.mobileNumber} email={details.email} webSite={details.webSite} address={details.address} />
-                <Frame3 sectionRef={sectionRef} number={details.mobileNumber} email={details.email} webSite={details.webSite} address={details.address} />
-                <Frame4 sectionRef={sectionRef} number={details.mobileNumber} email={details.email} webSite={details.webSite} address={details.address} />
-                <Frame5 sectionRef={sectionRef} number={details.mobileNumber} email={details.email} webSite={details.webSite} address={details.address} />
-                <Frame6 sectionRef={sectionRef} number={details.mobileNumber} email={details.email} webSite={details.webSite} address={details.address} /> */}
+            <div className="p-4">
+                <ComponentToRender sectionRef={sectionRef} {...details} />
             </div>
 
-            <Input label="number" handleChange={(e) => setDetails((prevState) => ({ ...prevState, number: e.target.value }))} placeholder="Name" value={details.number} />
-            <Input label="email" handleChange={(e) => setDetails((prevState) => ({ ...prevState, email: e.target.value }))} placeholder="email" value={details.email} />
-            <Input label="webSite" handleChange={(e) => setDetails((prevState) => ({ ...prevState, website: e.target.value }))} placeholder="webSite" value={details.website} />
-            <Input label="address" handleChange={(e) => setDetails((prevState) => ({ ...prevState, address: e.target.value }))} placeholder="address" value={details.address} />
+            <div className="px-6 space-y-3 mb-6 pb-3">
+                <Input
+                    label="Mobile Number"
+                    onChange={(e) => setDetails((prevState) => ({ ...prevState, mobileNumber: e }))}
+                    placeholder="Enter mobile number"
+                    value={details.mobileNumber}
+                    inputType="tel"
+                    pattern="[0-9]*"
+                    inputMode="numeric"
+                    maxLength={10}
+                    action={!details.hasOwnProperty("mobileNumber2") && id > 3 && !details.hasOwnProperty("email2") && "+ Add"}
+                    actionTextColor="text-blue-500"
+                    handleClickAction={() => setDetails((prevState) => ({ ...prevState, mobileNumber2: "" }))}
+                />
+
+                {details.hasOwnProperty("mobileNumber2") && id > 3 && (
+                    <Input
+                        label="Mobile Number"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, mobileNumber2: e }))}
+                        placeholder="Enter mobile number"
+                        value={details?.mobileNumber2}
+                        inputType="tel"
+                        pattern="[0-9]*"
+                        inputMode="numeric"
+                        maxLength={10}
+                        action="- Remove"
+                        actionTextColor="text-red-500"
+                        handleClickAction={() =>
+                            setDetails((prevState) => {
+                                const { mobileNumber2, ...newState } = prevState;
+                                return newState;
+                            })
+                        }
+                    />
+                )}
+
+                <Input
+                    label="Email"
+                    inputType="email"
+                    onChange={(e) => setDetails((prevState) => ({ ...prevState, email: e }))}
+                    placeholder="Enter email address"
+                    value={details.email}
+                    action={!details.hasOwnProperty("mobileNumber2") && id > 3 && !details.hasOwnProperty("email2") && "+ Add"}
+                    actionTextColor="text-blue-500"
+                    handleClickAction={() => setDetails((prevState) => ({ ...prevState, email2: "" }))}
+                />
+
+                {details.hasOwnProperty("email2") && id > 3 && (
+                    <Input
+                        label="Email"
+                        onChange={(e) => setDetails((prevState) => ({ ...prevState, email2: e }))}
+                        placeholder="Enter Email"
+                        value={details?.email2}
+                        action="- Remove"
+                        actionTextColor="text-red-500"
+                        handleClickAction={() =>
+                            setDetails((prevState) => {
+                                const { email2, ...newState } = prevState;
+                                return newState;
+                            })
+                        }
+                    />
+                )}
+
+                <Input label="Website" onChange={(e) => setDetails((prevState) => ({ ...prevState, website: e }))} placeholder="Enter website" value={details.website} />
+
+                <Input label="Address" boxClass="mb-1" maxLength={65} inputType="text" onChange={(e) => setAddress(e)} placeholder="Enter address" value={details.address} />
+
+                {hasLimitAddress && <span className="text-sm text-red-600">* Please make address smaller</span>}
+
+                <div className="pt-6">
+                    <Button label="Save" onClick={handleSave} />
+                </div>
+            </div>
         </>
     );
 }

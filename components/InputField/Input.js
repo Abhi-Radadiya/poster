@@ -15,7 +15,6 @@ export const Input = (props) => {
         addonIcon,
         placeholderTextColor,
         shadow,
-        helperText,
         value,
         addonStyle,
         handleClickAction,
@@ -31,6 +30,10 @@ export const Input = (props) => {
         diableInputStyle,
         prefix,
         prefixClass,
+        pattern,
+        inputMode,
+        maxLength,
+        boxClass,
     } = props;
 
     const [inputValue, setInputValue] = useState(value ?? "");
@@ -65,7 +68,7 @@ export const Input = (props) => {
                     </div>
                 )}
 
-                <div className="relative">
+                <div className={`relative ${boxClass}`}>
                     <input
                         type={inputType ?? "text"}
                         placeholder={placeholder}
@@ -78,6 +81,9 @@ export const Input = (props) => {
                         onKeyDown={(e) => {
                             inputType === "number" && e.key === "e" && e.preventDefault();
                         }}
+                        pattern={pattern}
+                        inputMode={inputMode}
+                        maxLength={maxLength}
                     />
                     <div className="flex flex-row absolute right-4 top-3.5 cursor-pointer" onClick={() => handleClickAddon && handleClickAddon()}>
                         <span className={`${addonStyle ?? "text-primary-300 paragraph-small-regular"}`}>{addon}</span>
@@ -87,7 +93,6 @@ export const Input = (props) => {
                     {placeholderIcon && <div className="h-6 w-6 rounded absolute top-3 left-4">{placeholderIcon}</div>}
                     {prefix && <span className={`absolute left-1 ${prefixClass}`}> {prefix} </span>}
                 </div>
-                {helperText && <p className="w-full pt-2 text-neutral-500 paragraph-small-regular group-disabled:text-neutral-300">{helperText}</p>}
             </div>
         </>
     );

@@ -43,20 +43,19 @@ const EmailIcon = ({ fill = "#000000", height = 24, width = 24 }) => (
     </svg>
 );
 
-const formatPhoneNumber = (number) => {
-    if (number.length === 10) {
-        number = "91" + number; // Add country code if missing
+export const formatPhoneNumber = (number) => {
+    if (number.length <= 5) {
+        return "+91 " + number;
     }
-    // Format the number with a space after the first two digits and after the fifth digit
-    const formattedNumber = number.replace(/(\d{2})(\d{5})(\d{5})/, "+$1 $2 $3");
-    return formattedNumber;
+
+    return "+91 " + number.slice(0, 5) + " " + number.slice(5);
 };
 
 export function Frame1(props) {
     const {
         className = "w-[320px] h-[320px] mx-auto flex",
         onClick,
-        mobileNumber = "1234579862",
+        mobileNumber = "1234567890",
         email = "example@mail.com",
         website = "www.example.com",
         address = "Enter your address",
@@ -71,7 +70,8 @@ export function Frame1(props) {
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
                                 <EmailIcon />
                             </span>
-                            <span className="text-[1.5px] font-bold pt-[1px]">{email}</span>
+                            <div style={{ fontSize: "1.5px", lineHeight: "1.5", whiteSpace: "nowrap" }}>textnode</div>
+                            {/* <span className="text-[1.5px] leading-3 font-bold pt-[1px]">{email}</span> */}
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5">
@@ -102,7 +102,9 @@ export function Frame1(props) {
                                 </svg>
                             </span>
 
-                            <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div>
+                            <span className="text-[1.5px] leading-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</span>
+
+                            {/* <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div> */}
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5">
@@ -110,7 +112,9 @@ export function Frame1(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
+                            <div style={{ fontSize: "1.5px", lineHeight: "1.5px", whiteSpace: "nowrap" }}>textnode</div>
+
+                            <div className="text-[1.5px] pt-[1px] leading-3 font-bold">{website}</div>
                         </div>
                     </div>
 
@@ -305,6 +309,8 @@ export function Frame4(props) {
         email = "example@mail.com",
         website = "www.example.com",
         address = "Enter your address",
+        email2,
+        mobileNumber2,
     } = props;
 
     return (
@@ -312,7 +318,43 @@ export function Frame4(props) {
             <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
                 <div className="absolute bottom-0 w-full">
                     <div className="flex flex-row items-center w-full bg-black text-white py-1">
-                        <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4"></div>
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
+                            {mobileNumber2 && (
+                                <div className="flex flex-row items-center gap-0.5">
+                                    <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                        <CallIcon className="h-[6px] w-[6px]" fill="#000000" />
+                                    </span>
+
+                                    <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber2)}</div>
+                                </div>
+                            )}
+                            {email2 && (
+                                <div className="flex flex-row items-center gap-0.5 mr-5">
+                                    <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                        <svg
+                                            fill="#FFFFFF"
+                                            width="64px"
+                                            height="64px"
+                                            viewBox="0 0 1920 1920"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            stroke="#FFFFFF"
+                                            strokeWidth="0.019200000000000002"
+                                            className="h-[6px] w-[6px]"
+                                        >
+                                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                                    fillRule="evenodd"
+                                                ></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <span className="text-[1.5px] font-bold pt-[1px]">{email2}</span>
+                                </div>
+                            )}
+                        </div>
 
                         <div className="bg-white h-5 -my-1 w-2.5 ml-2" style={{ transform: "skew(16deg)" }} />
 
@@ -384,6 +426,8 @@ export function Frame5(props) {
         email = "example@mail.com",
         website = "www.example.com",
         address = "Enter your address",
+        mobileNumber2,
+        email2,
     } = props;
 
     return (
@@ -392,11 +436,61 @@ export function Frame5(props) {
                 <div className="absolute bottom-0 w-full">
                     <div className="flex flex-row items-center w-full text-black py-1">
                         <div className="flex flex-row items-center gap-0.5 w-1/2 mr-5 pl-4">
-                            <span className="border-[0.5px] border-black p-0.5 rounded-full">
-                                <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
-                            </span>
+                            {mobileNumber2 && (
+                                <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                    <svg
+                                        viewBox="0 0 15 15"
+                                        version="1.1"
+                                        height={6}
+                                        width={6}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                                        fill="#000000"
+                                    >
+                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                                                <g id="Dribbble-Light-Preview" transform="translate(-103.000000, -7321.000000)" fill="#000000">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path
+                                                            d="M61.7302966,7173.99596 C61.2672966,7175.40296 59.4532966,7176.10496 58.1572966,7175.98796 C56.3872966,7175.82796 54.4612966,7174.88896 52.9992966,7173.85496 C50.8502966,7172.33496 48.8372966,7169.98396 47.6642966,7167.48896 C46.8352966,7165.72596 46.6492966,7163.55796 47.8822966,7161.95096 C48.3382966,7161.35696 48.8312966,7161.03996 49.5722966,7161.00296 C50.6002966,7160.95296 50.7442966,7161.54096 51.0972966,7162.45696 C51.3602966,7163.14196 51.7112966,7163.84096 51.9072966,7164.55096 C52.2742966,7165.87596 50.9912966,7165.93096 50.8292966,7167.01396 C50.7282966,7167.69696 51.5562966,7168.61296 51.9302966,7169.09996 C52.6632966,7170.05396 53.5442966,7170.87696 54.5382966,7171.50296 C55.1072966,7171.86196 56.0262966,7172.50896 56.6782966,7172.15196 C57.6822966,7171.60196 57.5872966,7169.90896 58.9912966,7170.48196 C59.7182966,7170.77796 60.4222966,7171.20496 61.1162966,7171.57896 C62.1892966,7172.15596 62.1392966,7172.75396 61.7302966,7173.99596 C61.4242966,7174.92396 62.0362966,7173.06796 61.7302966,7173.99596"
+                                                            id="call-[#192]"
+                                                        ></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </span>
+                            )}
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
+                            {email2 && (
+                                <span className="border-[0.5px] border-black p-0.5 rounded-full">
+                                    <svg
+                                        fill="#000000"
+                                        width="64px"
+                                        height="64px"
+                                        viewBox="0 0 1920 1920"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        stroke="#000000"
+                                        strokeWidth="0.019200000000000002"
+                                        className="h-[6px] w-[6px]"
+                                    >
+                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                                fillRule="evenodd"
+                                            ></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                            )}
+
+                            {mobileNumber2 && <div className="text-[1.5px] pt-[1px] font-bold">{formatPhoneNumber(mobileNumber2)}</div>}
+                            {email2 && <div className="text-[1.5px] pt-[1px] font-bold">{email2}</div>}
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 w-1/2 ml-5">
@@ -488,6 +582,8 @@ export function Frame6(props) {
         email = "example@mail.com",
         website = "www.example.com",
         address = "Enter your address",
+        mobileNumber2,
+        email2,
     } = props;
 
     return (
@@ -495,12 +591,39 @@ export function Frame6(props) {
             <div className={`border border-neutral-300 relative ${className}`} onClick={onClick}>
                 <div className="absolute bottom-0 w-full">
                     <div className="flex flex-row items-center w-full py-1 gap-2">
-                        <div className="flex flex-row items-center gap-0.5 w-1/2 pl-4 bg-black text-white py-1 rounded-r-xl">
-                            <span className="border-[0.5px] border-white p-0.5 rounded-full">
-                                <WebIcon className="h-[6px] w-[6px]" fill="#FFFFFF" />
-                            </span>
+                        <div className="flex flex-row items-center gap-0.5 w-1/2 pl-4 bg-black text-white rounded-r-xl">
+                            {mobileNumber2 && (
+                                <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                    <CallIcon className="h-[6px] w-[6px]" fill="#000000" stroke="#000000" />
+                                </span>
+                            )}
 
-                            <div className="text-[1.5px] pt-[1px] font-bold">{website}</div>
+                            {email2 && (
+                                <span className="border-[0.5px] border-white p-0.5 rounded-full">
+                                    <svg
+                                        fill="#FFFFFF"
+                                        width="64px"
+                                        height="64px"
+                                        viewBox="0 0 1920 1920"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        stroke="#FFFFFF"
+                                        strokeWidth="0.019200000000000002"
+                                        className="h-[6px] w-[6px]"
+                                    >
+                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M1920 428.266v1189.54l-464.16-580.146-88.203 70.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 832.44L.045 278.628V226h1919.887Z"
+                                                fillRule="evenodd"
+                                            ></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                            )}
+
+                            {mobileNumber2 && <div className="text-[1.5px] pb-1 pt-[5px] font-bold">{formatPhoneNumber(mobileNumber2)}</div>}
+                            {email2 && <div className="text-[1.5px] pb-1 pt-[5px] font-bold">{email2}</div>}
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5 w-1/2 bg-black pl-2 text-white py-1 rounded-l-xl">
