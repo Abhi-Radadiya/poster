@@ -9,7 +9,6 @@ import MakeLoginPopup from "../components/MakeLoginPopup/MakeLoginPopup";
 import Navbar from "../components/Navbar";
 import SelectedImageSection from "../components/SelectedImageSection";
 import RecommendationSection from "../components/RecommendationSection";
-import domtoimage from "dom-to-image";
 
 export default function Page() {
     const { imageData } = useImageData();
