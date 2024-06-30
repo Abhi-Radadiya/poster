@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import BackIcon from "../../assets/chevron-down.svg";
 import Link from "next/link";
 import Button from "@/components/Button/Button";
-import axios from "axios"; // Add this if you decide to use axios
 import { useRouter } from "next/navigation";
+import { axiosInstance } from "@/APIHelper/axios";
 
 function FeedbackForm() {
     const [selectedRating, setSelectedRating] = useState(null);
@@ -42,7 +42,7 @@ function FeedbackForm() {
         };
 
         try {
-            const response = await axios.post("http://192.168.43.147:5000/api/feedback", feedbackData);
+            const response = await axiosInstance.post("/feedback", feedbackData);
 
             if (response.status === 201) {
                 setSuccess("Thank you for your feedback!");

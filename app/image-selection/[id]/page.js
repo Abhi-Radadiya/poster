@@ -3,8 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useImageData } from "@/context/ImageDataContext";
 import html2canvas from "html2canvas";
-import Button from "@/components/Button/Button";
-import { Frame1 } from "@/components/Frames/Frame";
 import MakeLoginPopup from "../components/MakeLoginPopup/MakeLoginPopup";
 import Navbar from "../components/Navbar";
 import SelectedImageSection from "../components/SelectedImageSection";

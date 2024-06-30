@@ -5,8 +5,8 @@ import Dropdown from "@/components/Dropdown/Dropdown";
 import { Input } from "@/components/InputField/Input";
 import { InputArea } from "@/components/InputField/InputArea";
 import React, { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { axiosInstance } from "@/APIHelper/axios";
 
 const BugReportForm = () => {
     const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const BugReportForm = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post("http://192.168.43.147:5000/api/bug-report", formData);
+            const response = await axiosInstance.post("/bug-report", formData);
             if (response.status === 201) {
                 setMessage("Bug report submitted successfully!");
                 setIsSuccess(true);

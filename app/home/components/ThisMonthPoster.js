@@ -5,7 +5,7 @@ import CalenderIcon from "../../../assets/calendar-icon.svg";
 import image from "../../../assets/demo-poster-header.jpg";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import axios from "axios";
+import { axiosInstance } from "@/APIHelper/axios";
 
 const data = [
     { date: "18 Apr", image: [image, image, image, image, image] },
@@ -38,7 +38,7 @@ export default function Page() {
 
     const fetchFestivalData = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/festival-image");
+            const response = await axiosInstance.get("/festival-image");
             setDateWisePoster(response.data);
         } catch (error) {
             console.log("error ==> ", error);

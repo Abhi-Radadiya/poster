@@ -4,8 +4,8 @@ import Button from "@/components/Button/Button";
 import { Input } from "@/components/InputField/Input";
 import Link from "next/link";
 import React, { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { axiosInstance } from "@/APIHelper/axios";
 
 const Login = () => {
     const [mobileNumber, setMobileNumber] = useState("");
@@ -17,7 +17,7 @@ const Login = () => {
     const handleSendOtp = async () => {
         setOtpSent(true);
         // try {
-        //     const response = await axios.post("http://localhost:5000/api/user/send-otp", { mobileNumber });
+        //     const response = await axiosInstance.post("/user/send-otp", { mobileNumber });
         //     setDeviceId(response.data.deviceId);
         // } catch (error) {
         //     console.error("Error sending OTP:", error);
@@ -26,7 +26,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", { mobileNumber, otp });
+            const response = await axiosInstance.post("/auth/login", { mobileNumber, otp });
 
             const token = response?.data?.token;
 
