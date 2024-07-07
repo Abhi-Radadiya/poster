@@ -17,7 +17,7 @@ const Login = () => {
     const handleSendOtp = async () => {
         setOtpSent(true);
         // try {
-        //     const response = await axiosInstance.post("/user/send-otp", { mobileNumber });
+        //     const response = await axiosInstance.post("a/user/send-otp", { mobileNumber });
         //     setDeviceId(response.data.deviceId);
         // } catch (error) {
         //     console.error("Error sending OTP:", error);

@@ -35,9 +35,9 @@ export default function Home() {
             <div className="w-full mb-[80px]">
                 <Header />
 
-                <TrendingBanners />
+                <TrendingBanners banner={data.find((el) => el.category === "banner")?.data} />
 
-                <ThisMonthPoster />
+                <ThisMonthPoster poster={data.find((el) => el.category === "festival")?.data} />
 
                 {!data.length ? (
                     <>
@@ -49,7 +49,9 @@ export default function Home() {
                         <Loader />
                     </>
                 ) : (
-                    data.map((item) => <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />)
+                    data
+                        .filter((el) => el.category !== "banner" || el.category !== "festival")
+                        .map((item) => <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />)
                 )}
             </div>
         </>

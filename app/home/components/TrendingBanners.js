@@ -1,97 +1,14 @@
 "use client";
 
-// import image from "../../../assets/demo-poster-header.jpg";
-// import Image from "next/image";
-// import { useWindowSize } from "@uidotdev/usehooks";
-
-// const Home = () => {
-//     const images = [image, image, image, image, image];
-
-//     const width = useWindowSize().width;
-
-//     return (
-//         <div className="mt-5">
-//             <div className="flex flex-row overflow-auto">
-//                 {images.map((el, index) => (
-//                     <div style={{ width: width - 50 }} className="flex-none mx-5" key={index}>
-//                         <Image src={el} alt="2" height={"auto"} width={"auto"} className="rounded-xl" />
-//                     </div>
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Home;
-
-// import React, { useState, useEffect } from 'react';
-// import image from '../../../assets/demo-poster-header.jpg';
-// import Image from 'next/image';
-// import { useWindowSize } from '@uidotdev/usehooks';
-
-// const Home = () => {
-//   const images = [image, image, image, image, image];
-//   const width = useWindowSize().width;
-
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   useEffect(() => {
-//     const intervalId = setInterval(() => {
-//       // Move to the next image
-//       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-//     }, 5000); // Change the interval duration as needed (5000ms = 5 seconds)
-
-//     return () => {
-//       // Clean up the interval when the component unmounts
-//       clearInterval(intervalId);
-//     };
-//   }, [images.length]);
-
-//   return (
-//     <div className="mt-5">
-//       <div className="flex flex-row overflow-hidden">
-//         {images.map((el, index) => (
-//           <div
-//             key={index}
-//             style={{
-//               width,
-//               transform: `translateX(${(index - currentIndex) * width}px)`,
-//               transition: 'transform 0.5s ease-in-out',
-//             }}
-//             className="flex-none"
-//           >
-//             <Image src={el} alt="2" height={'auto'} width={'auto'} className="rounded-xl" />
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import image from "../../../assets/demo-poster-header.jpg";
-import Image from "next/image";
 import "./styles.css";
 import Link from "next/link";
 
-const Carousel = () => {
-    const images = [image, image, image, image, image];
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, [images.length]);
+const Carousel = (props) => {
+    const { banner } = props;
 
     const settings = {
         dots: true,
@@ -100,7 +17,6 @@ const Carousel = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
-        beforeChange: (current, next) => setCurrentIndex(next),
         autoplay: true,
         autoplaySpeed: 3000,
         centerMode: true,
@@ -111,9 +27,9 @@ const Carousel = () => {
     return (
         <div className="mt-2">
             <Slider {...settings} className="slick-dots-custom">
-                {images.map((el, index) => (
+                {banner?.map((el, index) => (
                     <Link href={`/image-selection/${index}`} key={index} className="flex justify-center px-1">
-                        <Image src={el} alt={`Slide ${index + 1}`} className="rounded-xl" />
+                        <img alt="" src={el?.url} className="rounded-xl w-[80vw] h-[200px]" />
                     </Link>
                 ))}
             </Slider>

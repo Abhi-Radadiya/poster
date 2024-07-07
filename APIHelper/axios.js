@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
+    // baseURL: "http://localhost:5000/api", // Default to localhost:5000/api if BASE_API is not set
     baseURL: "https://backend-art-era.vercel.app/api", // Default to localhost:5000/api if BASE_API is not set
     headers: {
         "Content-Type": "application/json",

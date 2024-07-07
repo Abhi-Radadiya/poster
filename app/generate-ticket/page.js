@@ -29,7 +29,7 @@ const BugReportForm = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axiosInstance.post("/bug-report", formData);
+            const response = await axiosInstance.post("/bug/bug-report", formData);
             if (response.status === 201) {
                 setMessage("Bug report submitted successfully!");
                 setIsSuccess(true);

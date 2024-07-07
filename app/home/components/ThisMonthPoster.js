@@ -5,7 +5,6 @@ import CalenderIcon from "../../../assets/calendar-icon.svg";
 import image from "../../../assets/demo-poster-header.jpg";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { axiosInstance } from "@/APIHelper/axios";
 
 const data = [
     { date: "18 Apr", image: [image, image, image, image, image] },
@@ -23,7 +22,30 @@ const data = [
     { date: "30 Apr", image: [image, image, image] },
 ];
 
-export default function Page() {
+export default function Page(props) {
+    const { poster } = props;
+
+    const formattedData = poster?.reduce((acc, poster) => {
+        const formattedDate = new Date(poster.date).toLocaleDateString("en-US", { day: "2-digit", month: "long" });
+
+        const existingDateGroup = acc.find((group) => group.date === formattedDate);
+
+        if (existingDateGroup) {
+            existingDateGroup.image.push(poster);
+        } else {
+            acc.push({
+                date: formattedDate,
+                image: [poster],
+            });
+        }
+
+        return acc;
+    }, []);
+
+    useEffect(() => {
+        setDateWisePoster(formattedData);
+    }, [poster]);
+
     const containerRef = useRef(null);
 
     const scrollToImages = (date) => {
@@ -36,19 +58,6 @@ export default function Page() {
 
     const [dateWisePoster, setDateWisePoster] = useState([]);
 
-    const fetchFestivalData = async () => {
-        try {
-            const response = await axiosInstance.get("/festival-image");
-            setDateWisePoster(response.data);
-        } catch (error) {
-            console.log("error ==> ", error);
-        }
-    };
-
-    useEffect(() => {
-        fetchFestivalData();
-    }, []);
-
     return (
         <>
             <div className="flex flex-row items-center mt-8 mx-4">
@@ -59,9 +68,9 @@ export default function Page() {
             </div>
 
             <div className="flex flex-row overflow-auto mt-3 mx-2 mb-2 no-scrollbar" style={{ scrollbarColor: "transparent transparent" }}>
-                {dateWisePoster.map((el, index) => (
+                {dateWisePoster?.map((el, index) => (
                     <div
-                        className="h-12 w-12 mx-1 bg-white rounded-lg flex-none cursor-pointer flex items-center justify-center text-center"
+                        className="h-12 w-fit px-1 mx-1 bg-white rounded-lg flex-none cursor-pointer flex items-center justify-center text-center"
                         key={index}
                         onClick={() => scrollToImages(el.date)}
                     >
@@ -71,7 +80,7 @@ export default function Page() {
             </div>
 
             <div ref={containerRef} className="flex flex-row overflow-auto w-full no-scrollbar pl-2">
-                {dateWisePoster.map((el, dateIndex) => (
+                {dateWisePoster?.map((el, dateIndex) => (
                     <div key={dateIndex} className="flex flex-row">
                         {el.image.map((image, index) => (
                             <Link href={`/image-selection/${index}`} key={index} className="flex flex-row items-center justify-center mx-1 w-full relative">
@@ -79,12 +88,12 @@ export default function Page() {
                                     loading="lazy"
                                     height={100}
                                     key={index}
-                                    src={image}
+                                    src={image.url}
                                     alt={`Image ${index + 1}`}
                                     className="flex-none mx-4 h-[104px] min-w-[78px] rounded-xl"
                                     width={100}
                                 />
-                                <span className="text-xs absolute left-0.5 py-1 bottom-0 bg-neutral-500 rounded-tr-md px-1.5">{el.date}</span>
+                                <span className="text-xs absolute left-0.5 py-1 bottom-0 bg-neutral-500 rounded-tr-md rounded-bl-md px-1.5">{el.date}</span>
                             </Link>
                         ))}
                     </div>

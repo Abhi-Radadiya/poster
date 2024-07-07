@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import BackIcon from "@/assets/chevron-down.svg";
+import UploadIcon from "@/assets/upload.svg";
 import Image from "next/image";
 
 function ImageUploader() {
@@ -29,7 +29,8 @@ function ImageUploader() {
                 <input id="image-input" type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
 
                 <div className="absolute -right-2 bottom-2 bg-blue-500 h-8 w-8 pt-1 rounded-full">
-                    <BackIcon className="h-5 w-6" />
+                    <UploadIcon className="h-5 w-5 ml-1.5" />
+                    {/* <BackIcon className="h-5 w-6" /> */}
                 </div>
             </div>
         </div>

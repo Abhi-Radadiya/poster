@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import BackIcon from "@/assets/chevron-down.svg";
 import Input from "./Component/Input";
 import ImageUploader from "./Component/ImageUploader";
 import Link from "next/link";
@@ -19,8 +18,10 @@ export default function Page() {
         <>
             <div className="py-3 mx-4 flex flex-row justify-between items-center sticky top-0 bg-[#efefef] z-10">
                 <div className="flex flex-row items-center gap-3">
-                    <Link href="/menu" className="bg-neutral-50 rounded-full h-full w-fit p-2">
-                        <BackIcon className="rotate-90 w-5" />
+                    <Link href="/menu" className="bg-white rounded-xl border-none p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-700">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
                     </Link>
 
                     <span className="font-medium text-sm tracking-wide">Edit Profile</span>
