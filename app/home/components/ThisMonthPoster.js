@@ -5,6 +5,9 @@ import CalenderIcon from "../../../assets/calendar-icon.svg";
 import image from "../../../assets/demo-poster-header.jpg";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useImageData } from "@/context/ImageDataContext";
+import { format } from "date-fns";
+// import { format } from "date-fns";
 
 const data = [
     { date: "18 Apr", image: [image, image, image, image, image] },
@@ -51,16 +54,25 @@ export default function Page(props) {
     const scrollToImages = (date) => {
         const index = dateWisePoster.findIndex((el) => el.date === date);
         if (containerRef.current && index !== -1) {
-            const position = index * 100;
-            containerRef.current.scrollTo({ left: position, behavior: "smooth" });
+            const element = containerRef.current.children[index];
+            if (element) {
+                const position = element.offsetLeft;
+                containerRef.current.scrollTo({ left: position, behavior: "smooth" });
+            }
         }
     };
 
     const [dateWisePoster, setDateWisePoster] = useState([]);
 
+    const { setImageData } = useImageData();
+
+    const handleImageClick = (image) => {
+        setImageData({ allImage: poster, selectedImage: image });
+    };
+
     return (
         <>
-            <div className="flex flex-row items-center mt-8 mx-4">
+            <div className="flex flex-row items-center mt-7 mx-4">
                 <div className="rounded-full h-7 w-7 bg-white flex items-center justify-center">
                     <CalenderIcon height={14} width={14} className="stroke-neutral-400" />
                 </div>
@@ -74,26 +86,37 @@ export default function Page(props) {
                         key={index}
                         onClick={() => scrollToImages(el.date)}
                     >
-                        <div className="flex items-center text-xs font-medium text-neutral-700 justify-center">{el.date}</div>
+                        <div className="flex items-center px-1 text-[11px] font-medium text-neutral-700 justify-center">{el.date}</div>
                     </div>
                 ))}
             </div>
 
-            <div ref={containerRef} className="flex flex-row overflow-auto w-full no-scrollbar pl-2">
+            <div ref={containerRef} className="flex flex-row overflow-auto w-full no-scrollbar py-2 pl-2">
                 {dateWisePoster?.map((el, dateIndex) => (
                     <div key={dateIndex} className="flex flex-row">
                         {el.image.map((image, index) => (
-                            <Link href={`/image-selection/${index}`} key={index} className="flex flex-row items-center justify-center mx-1 w-full relative">
+                            <Link
+                                href={`/image-selection/${index}`}
+                                onClick={() => handleImageClick(image)}
+                                key={index}
+                                className="flex flex-row items-center justify-center mx-1 w-full relative"
+                            >
                                 <Image
                                     loading="lazy"
                                     height={100}
                                     key={index}
                                     src={image.url}
                                     alt={`Image ${index + 1}`}
-                                    className="flex-none mx-4 h-[104px] min-w-[78px] rounded-xl"
+                                    className="flex-none h-[125px] min-w-[125px] rounded-xl"
                                     width={100}
+                                    style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
                                 />
-                                <span className="text-xs absolute left-0.5 py-1 bottom-0 bg-neutral-500 rounded-tr-md rounded-bl-md px-1.5">{el.date}</span>
+                                <span
+                                    style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
+                                    className="text-xs absolute left-[0px] py-1 bottom-0 bg-white rounded-tr-md rounded-bl-md px-1.5"
+                                >
+                                    {format(new Date(el.date), "dd")}
+                                </span>
                             </Link>
                         ))}
                     </div>

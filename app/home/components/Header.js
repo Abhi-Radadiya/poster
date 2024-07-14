@@ -7,7 +7,7 @@ import SearchIcon from "../../../assets/search.svg";
 
 export default function Header() {
     return (
-        <div className="px-4 sticky top-0 w-full bg-[#efefef] z-50 pb-4">
+        <div className="px-4 sticky top-0 w-full bg-[#fcfcfc] z-50 bg-opacity-100">
             <div className="flex flex-row justify-between items-center mb-2.5">
                 <div className="flex flex-col">
                     <div className="mt-2 items-center flex flow-row gap-1">
@@ -22,7 +22,7 @@ export default function Header() {
                     </div>
                 </div>
 
-                <NotificationIcon height="16" width="16" />
+                <NotificationIcon className="stroke-neutral-400 fill-neutral-400" stroke="#FFFFFF" height="24" width="24" />
             </div>
 
             {/* <div className="relative h-12 -mx-1">

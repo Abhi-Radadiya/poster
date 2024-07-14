@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start": "next dev",
         "lint": "next lint",
         "devx": "HOST=0.0.0.0 next dev",
         "runIP": "npx next dev -H 192.168.43.147"
@@ -18,9 +18,12 @@
         "@uidotdev/usehooks": "^2.4.1",
         "axios": "^1.6.8",
         "bcryptjs": "^2.4.3",
+        "date-fns": "^3.6.0",
         "dotenv": "^16.3.1",
+        "firebase": "^10.12.3",
         "html-to-image": "^1.11.11",
         "html2canvas": "^1.4.1",
+        "localforage": "^1.10.0",
         "lodash": "^4.17.21",
         "mongoose": "^8.0.3",
         "moveable": "^0.52.0",

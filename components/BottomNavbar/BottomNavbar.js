@@ -42,8 +42,8 @@ const BottomNav = () => {
                 label="home"
                 icon={
                     <HomeIcon
-                        stroke={activeTab.toLowerCase() === "home" ? "#FFFFFF" : "#000000"}
-                        fill={activeTab.toLowerCase() !== "home" ? "#FFFFFF" : "#000000"}
+                        stroke={activeTab.toLowerCase() === "home" ? "#FFFFFF" : "#BCBEC0"}
+                        fill={activeTab.toLowerCase() !== "home" ? "#FFFFFF" : "#525252"}
                         height={24}
                         width={24}
                     />
@@ -58,8 +58,8 @@ const BottomNav = () => {
                     label="Custom"
                     icon={
                         <GalleryIcon
-                            stroke={activeTab.toLowerCase() === "custom" ? "#FFFFFF" : "#000000"}
-                            fill={activeTab.toLowerCase() !== "custom" ? "#FFFFFF" : "#000000"}
+                            stroke={activeTab.toLowerCase() === "custom" ? "#FFFFFF" : "#BCBEC0"}
+                            fill={activeTab.toLowerCase() !== "custom" ? "#FFFFFF" : "#525252"}
                             height={24}
                             width={24}
                         />
@@ -74,8 +74,8 @@ const BottomNav = () => {
                 label="profile"
                 icon={
                     <ProfileIcon
-                        stroke={activeTab.toLowerCase() === "profile" ? "#FFFFFF" : "#000000"}
-                        fill={activeTab.toLowerCase() !== "profile" ? "#FFFFFF" : "#000000"}
+                        stroke={activeTab.toLowerCase() === "profile" ? "#FFFFFF" : "#BCBEC0"}
+                        fill={activeTab.toLowerCase() !== "profile" ? "#FFFFFF" : "#525252"}
                         height={28}
                         width={28}
                     />
@@ -89,8 +89,8 @@ const BottomNav = () => {
                 label="menu"
                 icon={
                     <MenuIcon
-                        stroke={activeTab.toLowerCase() === "menu" ? "#FFFFFF" : "#000000"}
-                        fill={activeTab.toLowerCase() !== "menu" ? "#FFFFFF" : "#000000"}
+                        stroke={activeTab.toLowerCase() === "menu" ? "#FFFFFF" : "#BCBEC0"}
+                        fill={activeTab.toLowerCase() !== "menu" ? "#FFFFFF" : "#525252"}
                         height={24}
                         width={24}
                     />

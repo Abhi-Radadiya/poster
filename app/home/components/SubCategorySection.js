@@ -19,27 +19,34 @@ export default function ImageGallery({ data }) {
 
     return (
         <div className="container mx-auto">
-            <div className="flex flex-row mb-2 px-4">
+            <div className="flex flex-row px-4">
                 {data.map((item) => (
                     <button
                         key={item.title}
                         onClick={() => setActiveSubcategory(item.title)}
-                        className={`mx-0.5 my-1 px-2.5 py-1.5 text-sm text-neutral-600 rounded-3xl flex flex-row items-center border gap-2 ${
-                            activeSubcategory === item.title ? "border-blue-400" : "border-neutral-200"
+                        className={`mx-0.5 my-1 px-2.5 py-1.5 text-xs capitalize text-neutral-600 rounded-3xl flex flex-row items-center border gap-2 ${
+                            activeSubcategory === item.title ? "border-blue-400 bg-[#dbeafe66]" : "border-neutral-200"
                         }`}
                     >
-                        {activeSubcategory === item.title && <Image alt="" src={CheckMark} height={12} width={12} />}
+                        {/* {activeSubcategory === item.title && <Image alt="" src={CheckMark} height={12} width={12} />} */}
 
-                        {item.title}
+                        {item.title === "ai" ? "AI" : item.title}
                     </button>
                 ))}
             </div>
 
-            <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2 px-3">
+            <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2 px-3 py-2">
                 {filteredData.map((subcategory, index) =>
                     subcategory.data.map((image) => (
-                        <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-4 mx-0.5 w-full">
-                            <Image height={200} width={200} src={image.url} alt={`Image ${index + 1}`} className="mx-4 h-[130px] min-w-[83px] rounded-xl" />
+                        <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-0 mx-0.5 w-full">
+                            <Image
+                                height={100}
+                                width={100}
+                                src={image.url}
+                                alt={`Image ${index + 1}`}
+                                className="h-[125px] min-w-[125px] rounded-xl"
+                                style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
+                            />
                         </Link>
                     ))
                 )}

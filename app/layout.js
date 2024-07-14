@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
             </head>
-            <body className="bg-[#efefef]">
+            <body className="bg-[#efefef73]">
                 <ClientProvider>
                     <ImageDataProvider>
                         {children}

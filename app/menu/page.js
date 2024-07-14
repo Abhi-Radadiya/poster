@@ -14,6 +14,12 @@ import FacebookIcon from "@/assets/facebook.svg";
 import InstagramIcon from "@/assets/instagram.svg";
 import WhastappIcon from "@/assets/whatsapp.svg";
 import LinkedIcon from "@/assets/linkdln.svg";
+import BusinessCase from "@/assets/business-case-3d.png";
+import DownloadIcon3d from "@/assets/download-3d.png";
+import Image from "next/image";
+import gift3d from "@/assets/gift-3d.png";
+// import coupencodeBg from "../../assets/coupen-backgroud.jpg";
+// import coupencodeBg from "@/assets/coupen-backgroud.jpg";
 
 export default function Page() {
     const whatsappNumber = "7433804998";
@@ -22,12 +28,15 @@ export default function Page() {
 
     return (
         <>
-            <div className="flex flex-row justify-between items-center px-2">
+            <div className="flex flex-row justify-between items-center px-4">
                 <Link className="flex flex-row items-center gap-3 mt-3" href="/edit-profile">
-                    <ProfileIcon className="h-14 w-14" />
-                    <div className="flex flex-col">
-                        <span className="font-medium text-[20px] text-neutral-700">Rushit xx</span>
-                        <span className="font-medium text-[13px] text-neutral-400 tracking-wide">+91 8888 88 888</span>
+                    <span className="bg-neutral-600 rounded-full p-1">
+                        <ProfileIcon className="h-10 w-10" fill="#FFFFFF" stroke={0} />
+                    </span>
+
+                    <div className="flex flex-col mt-1">
+                        <span className="font-medium text-[20px] text-neutral-600">Rushit infoteck</span>
+                        <span className="font-normal text-[16px] text-neutral-400 tracking-wide">+91 8888 88 888</span>
                     </div>
                 </Link>
 
@@ -37,18 +46,19 @@ export default function Page() {
             </div>
 
             <div className="px-4 pt-5 flex flex-row gap-4">
-                <Link href="/my-business" className="flex flex-col w-1/2 bg-white rounded-xl p-5 items-center">
-                    <CustomizeIcon />
-                    <span className="font-normal text-[16px]">My Businesses</span>
+                <Link href="/my-business" className="flex flex-col w-1/2 bg-white rounded-xl px-5 pb-[18px] pt-5 items-center">
+                    <Image src={BusinessCase} className="h-[40px] w-[40px] mb-1" />
+                    <span className="font-bold text-neutral-600 text-[16px]">My Businesses</span>
                 </Link>
-                <div className="flex flex-col w-1/2 bg-white rounded-xl p-5 items-center">
-                    <CustomizeIcon />
-                    <span className="font-normal text-[16px]">Download</span>
+                <div className="flex flex-col w-1/2 bg-white rounded-xl px-5 items-center pt-5 pb-[18px]">
+                    <Image src={DownloadIcon3d} className="h-[40px] w-[40px] mb-1.5" />
+
+                    <span className="font-bold text-[16px] text-neutral-600">Download</span>
                 </div>
             </div>
 
             <div className="px-4 mb-7">
-                <div className="bg-white rounded-xl mt-5 pb-4">
+                <div className="bg-white rounded-xl mt-5 pb-4 ">
                     <div className="w-full py-1 rounded-t-xl mb-4 font-medium px-3 bg-neutral-300 text-[10px] text-neutral-600 tracking-wider">
                         Earn upto 1000 point coins per friend
                     </div>
@@ -65,6 +75,7 @@ export default function Page() {
                         </div>
 
                         <div className="flex flex-col justify-center items-center w-[30%] pr-6 pt-10">
+                            <img src={gift3d} />
                             <span className="font-medium text-xl">20</span>
                             <span className="font-medium text-[12px] text-neutral-600 -mt-1">Earned coins</span>
                         </div>

@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="1 1 24 24" stroke-width="1.5" width="24"
-    height="24" color="#000000">
-    <defs>
-        <style>.cls-637b8d40f95e86b59c57a2dc-1{fill:none;stroke:currentColor;stroke-miterlimit:10;}</style>
-    </defs>
-    <g id="roll_brush" data-name="roll brush">
-        <line class="cls-637b8d40f95e86b59c57a2dc-1" x1="0.47" y1="4.34" x2="23.49" y2="4.34"></line>
-        <line class="cls-637b8d40f95e86b59c57a2dc-1" x1="0.47" y1="12.01" x2="23.49" y2="12.01"></line>
-        <line class="cls-637b8d40f95e86b59c57a2dc-1" x1="0.47" y1="19.68" x2="23.49" y2="19.68"></line>
-        <line class="cls-637b8d40f95e86b59c57a2dc-1" x1="19.66" y1="0.5" x2="19.66" y2="23.52"></line>
-        <line class="cls-637b8d40f95e86b59c57a2dc-1" x1="11.98" y1="0.5" x2="11.98" y2="23.52"></line>
-        <line class="cls-637b8d40f95e86b59c57a2dc-1" x1="4.31" y1="0.5" x2="4.31" y2="23.52"></line>
+<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+    stroke="#525252">
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+    <g id="SVGRepo_iconCarrier">
+        <path d="M18 21L18 3" stroke="#525252" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        <path d="M6 21L6 3" stroke="#525252" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        <path d="M21 6L3 6" stroke="#525252" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        <path d="M3 18L21 18" stroke="#525252" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round"></path>
     </g>
 </svg>

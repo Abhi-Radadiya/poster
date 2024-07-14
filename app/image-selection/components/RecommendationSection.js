@@ -26,12 +26,19 @@ export default function RecommendationSection(props) {
 
     return (
         <>
-            <div className="overflow-y-auto" style={{ height: screenHeight - 391 }}>
+            <div className="overflow-y-auto bg-white rounded-t-xl" style={{ height: screenHeight - 391 }}>
                 <div className="grid grid-cols-3 gap-3 p-3">
                     {filteredImage?.map((image, index) => {
                         return (
                             <Link key={index} href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)}>
-                                <Image src={image?.url} width={120} height={120} alt={`Image ${index + 1}`} className="w-full h-auto rounded-xl" />
+                                <Image
+                                    src={image?.url}
+                                    width={120}
+                                    height={120}
+                                    alt={`Image ${index + 1}`}
+                                    className="w-full h-auto rounded-lg"
+                                    style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
+                                />
                             </Link>
                         );
                     })}

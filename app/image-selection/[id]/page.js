@@ -46,7 +46,7 @@ export default function Page() {
             <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
             <RecommendationSection imageDetails={imageData} />
 
-            {showLoginPopup && <MakeLoginPopup />}
+            {/* {showLoginPopup && <MakeLoginPopup />} */}
         </>
     );
 }

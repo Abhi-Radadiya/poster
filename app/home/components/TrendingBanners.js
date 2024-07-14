@@ -29,7 +29,7 @@ const Carousel = (props) => {
             <Slider {...settings} className="slick-dots-custom">
                 {banner?.map((el, index) => (
                     <Link href={`/image-selection/${index}`} key={index} className="flex justify-center px-1">
-                        <img alt="" src={el?.url} className="rounded-xl w-[80vw] h-[200px]" />
+                        <img alt="" src={el?.url} className="rounded-xl w-[80vw] h-[200px]" loading="lazy" />
                     </Link>
                 ))}
             </Slider>

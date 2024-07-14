@@ -30,9 +30,8 @@ export const { fetchFrameStart, fetchFrameSuccess, fetchFrameFailure } = FrameSl
 export const fetchFrameDetail = () => async (dispatch) => {
     dispatch(fetchFrameStart());
     try {
-        const response = await axiosInstance.get("/user/get-frame-details");
-
-        dispatch(fetchFrameSuccess(response.data.frame));
+        // const response = await axiosInstance.get("/user/get-frame-details");
+        // dispatch(fetchFrameSuccess(response.data.frame));
     } catch (error) {
         dispatch(fetchFrameFailure(error.message));
     }

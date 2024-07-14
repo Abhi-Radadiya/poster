@@ -9,22 +9,22 @@ export default function Navbar(props) {
 
     return (
         <>
-            <div className="flex flex-row w-full justify-between items-center p-3">
+            <div className="flex flex-row w-full justify-between items-center px-3 py-1.5 bg-white mb-4">
                 <div className="flex flex-row items-center">
-                    <Link href="/home" className="rounded-full h-8 w-8 bg-white mr-2">
-                        <RightArrowIcon className="rotate-180 -ml-1 -mt-1" />
+                    <Link href="/home" className="rounded-full h-8 w-8 bg-[#efefef73] mr-2">
+                        <RightArrowIcon className="rotate-180 stroke-neutral-400" />
                     </Link>
 
-                    <span className="-mr-1.5">My Business</span>
+                    <div className="-mr-1.5 mt-0.5 tracking-wider text-neutral-600 text-base font-bold">My Business</div>
                 </div>
 
-                <div className="flex flex-row">
-                    <span className="mr-4">
+                <div className="flex flex-row mr-2">
+                    {/* <span className="mr-4">
                         <SearchIcon height={20} width={20} />
-                    </span>
+                    </span> */}
 
                     <span onClick={handleClickDownload}>
-                        <DownloadIcon height={20} width={20} />
+                        <DownloadIcon className="stroke-neutral-600" height={22} width={22} />
                     </span>
                 </div>
             </div>

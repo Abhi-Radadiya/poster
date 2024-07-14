@@ -1,7 +1,8 @@
+// app/page.js
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import TrendingBanners from "./components/TrendingBanners";
 import ThisMonthPoster from "./components/ThisMonthPoster";
@@ -9,26 +10,17 @@ import SingleScrollingSection from "./components/SingleScrollingSection";
 import TimeWatch from "@/assets/time-watch.svg";
 import Loader from "./components/Loader";
 import { useInitializeDeviceId } from "@/hooks/useInitializeDeviceId";
-import { axiosInstance } from "@/APIHelper/axios";
+import { fetchPosters } from "@/store/posterReducer";
 
 export default function Home() {
-    const [data, setData] = useState([]);
     const dispatch = useDispatch();
+    const { data, loading } = useSelector((state) => state.posters);
 
     useInitializeDeviceId();
 
     useEffect(() => {
-        fetchData();
+        !data?.length && dispatch(fetchPosters());
     }, [dispatch]);
-
-    const fetchData = async () => {
-        try {
-            const response = await axiosInstance.get("/posters");
-            setData(response.data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
 
     return (
         <>
@@ -39,7 +31,7 @@ export default function Home() {
 
                 <ThisMonthPoster poster={data.find((el) => el.category === "festival")?.data} />
 
-                {!data.length ? (
+                {loading ? (
                     <>
                         <Loader />
                         <Loader />
@@ -50,7 +42,7 @@ export default function Home() {
                     </>
                 ) : (
                     data
-                        .filter((el) => el.category !== "banner" || el.category !== "festival")
+                        .filter((el) => el.category !== "banner" && el.category !== "festival")
                         .map((item) => <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />)
                 )}
             </div>
