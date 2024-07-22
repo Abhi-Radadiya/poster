@@ -7,10 +7,16 @@ import MakeLoginPopup from "../components/MakeLoginPopup/MakeLoginPopup";
 import Navbar from "../components/Navbar";
 import SelectedImageSection from "../components/SelectedImageSection";
 import RecommendationSection from "../components/RecommendationSection";
+import ColorPalletIcon from "@/assets/color-palette.svg";
+import ColorSelection from "@/app/image-selection/components/ColorSelection";
 
 export default function Page() {
     const { imageData } = useImageData();
     const sectionRef = useRef();
+
+    const [style, setstyle] = useState({ backgroundColor: "#000000", color: "#FFFFFF" });
+
+    const [showCOlor, setShowCOlor] = useState(false);
 
     const handleClickDownload = async () => {
         if (sectionRef.current) {
@@ -43,8 +49,21 @@ export default function Page() {
     return (
         <>
             <Navbar handleClickDownload={handleClickDownload} />
-            <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} />
-            <RecommendationSection imageDetails={imageData} />
+
+            <SelectedImageSection imageDetails={imageData?.selectedImage} sectionRef={sectionRef} style={style} />
+
+            <div
+                className="mx-6 w-fit px-2 py-1 mb-2 flex flex-row items-center gap-2 border border-neutral-300 rounded-xl"
+                onClick={() => setShowCOlor((prevState) => !prevState)}
+            >
+                <span>
+                    <ColorPalletIcon className="w-4 h-4" />
+                </span>
+
+                <span className="text-base">Edit color</span>
+            </div>
+
+            {showCOlor ? <ColorSelection setstyle={setstyle} /> : <RecommendationSection imageDetails={imageData} />}
 
             {/* {showLoginPopup && <MakeLoginPopup />} */}
         </>

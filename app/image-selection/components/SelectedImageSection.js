@@ -1,42 +1,3 @@
-// "use client";
-
-// import React from "react";
-// import Slider from "react-slick";
-// import { Frame1, Frame2, Frame3, Frame4, Frame5 } from "./Frames";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import { useSelector } from "react-redux";
-
-// export default function SelectedImageSection(props) {
-//     const { imageDetails, sectionRef } = props;
-
-//     const frameDetails = useSelector((state) => state.frame.data);
-
-//     const frames = [Frame1, Frame2, Frame3, Frame4, Frame5];
-
-//     const settings = {
-//         dots: false,
-//         infinite: true,
-//         speed: 500,
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         initialSlide: 0,
-//         arrows: false,
-//     };
-
-//     return (
-//         <>
-//             <div className="w-full flex justify-center mb-4">
-//                 <div className="relative h-[320px] w-[320px] bg-white" ref={sectionRef}>
-//                     {imageDetails?.url && <img alt="x" src={imageDetails?.url} className="absolute top-0" />}
-
-//                     <Frame1 />
-//                 </div>
-//             </div>
-//         </>
-//     );
-// }
-
 "use client";
 
 import React from "react";
@@ -47,7 +8,7 @@ import { Frame1, Frame2, Frame3, Frame4, Frame5 } from "@/components/Frames/Fram
 import { useSelector } from "react-redux";
 
 export default function SelectedImageSection(props) {
-    const { imageDetails, sectionRef } = props;
+    const { imageDetails, sectionRef, style } = props;
 
     const frames = [Frame1, Frame2, Frame3, Frame4, Frame5];
 
@@ -72,7 +33,7 @@ export default function SelectedImageSection(props) {
                     <Slider {...settings} className="">
                         {frames.map((Frame, index) => (
                             <React.Fragment key={index}>
-                                <Frame {...frameDetails} />
+                                <Frame {...frameDetails} style={style} />
                             </React.Fragment>
                         ))}
                     </Slider>

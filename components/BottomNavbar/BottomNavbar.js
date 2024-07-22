@@ -23,6 +23,8 @@ const BottomNav = () => {
         page === "/edit-business-details" ||
         page === "/generate-ticket" ||
         page === "/available-plan" ||
+        page === "/terms-condition" ||
+        page === "/privacy-policy" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
         page.startsWith("/image-selection/") ||
@@ -30,10 +32,6 @@ const BottomNav = () => {
     ) {
         return;
     }
-
-    const handleIconClick = (iconName) => {
-        setActiveTab(iconName);
-    };
 
     return (
         <div className={`w-full px-5 pb-2 fixed h-[60px] bg-white flex items-center bottom-0 justify-between`}>
@@ -49,7 +47,7 @@ const BottomNav = () => {
                     />
                 }
                 isActive={activeTab.toLowerCase() === "home"}
-                handleIconClick={handleIconClick}
+                handleIconClick={setActiveTab}
             />
 
             <div className="mt-[4px]">
@@ -65,7 +63,7 @@ const BottomNav = () => {
                         />
                     }
                     isActive={activeTab.toLowerCase() === "custom"}
-                    handleIconClick={handleIconClick}
+                    handleIconClick={setActiveTab}
                 />
             </div>
 
@@ -81,7 +79,7 @@ const BottomNav = () => {
                     />
                 }
                 isActive={activeTab.toLowerCase() === "profile"}
-                handleIconClick={handleIconClick}
+                handleIconClick={setActiveTab}
             />
 
             <TrayItem
@@ -96,7 +94,7 @@ const BottomNav = () => {
                     />
                 }
                 isActive={activeTab.toLowerCase() === "menu"}
-                handleIconClick={handleIconClick}
+                handleIconClick={setActiveTab}
             />
         </div>
     );

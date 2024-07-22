@@ -1,6 +1,6 @@
 import React from "react";
 import RightArrowIcon from "@/assets/chevron-right.svg";
-import SearchIcon from "@/assets/search.svg";
+// import SearchIcon from "@/assets/search.svg";
 import DownloadIcon from "@/assets/download-icon.svg";
 import Link from "next/link";
 

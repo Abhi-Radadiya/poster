@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileIcon from "@/assets/profile.svg";
-import CustomizeIcon from "@/assets/CustomizeIcon.svg";
+import TermsIcon from "@/assets/terms.svg";
 import CopyIcon from "@/assets/copy.svg";
 import RightIcon from "@/assets/chevron-right.svg";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import PrivacyIcon from "@/assets/privacy.svg";
 import FollowIcon from "@/assets/follow.svg";
 import FacebookIcon from "@/assets/facebook.svg";
 import InstagramIcon from "@/assets/instagram.svg";
-import WhastappIcon from "@/assets/whatsapp.svg";
+import AboutUs from "@/assets/about-us.svg";
 import LinkedIcon from "@/assets/linkdln.svg";
 import BusinessCase from "@/assets/business-case-3d.png";
 import DownloadIcon3d from "@/assets/download-3d.png";
@@ -74,8 +74,8 @@ export default function Page() {
                             <button className="px-4 bg-blue-600 py-1.5 text-white font-normal text-[14px] rounded-3xl ml-3">Share</button>
                         </div>
 
-                        <div className="flex flex-col justify-center items-center w-[30%] pr-6 pt-10">
-                            <img src={gift3d} />
+                        <div className="flex flex-col justify-center items-center w-[30%] pr-6 -mt-6">
+                            <Image src={gift3d} height={60} />
                             <span className="font-medium text-xl">20</span>
                             <span className="font-medium text-[12px] text-neutral-600 -mt-1">Earned coins</span>
                         </div>
@@ -105,7 +105,7 @@ export default function Page() {
                     <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                         <div className="flex flex-row gap-3 items-center cursor-pointer rounded">
                             <ChatIcon className="h-5 w-5 stroke-neutral-200" />
-                            <span className="text-base">Chat with an Expert</span>
+                            <span className="text-base">Contact Us</span>
                         </div>
                     </Link>
 
@@ -143,26 +143,48 @@ export default function Page() {
                     <RightIcon className="w-7 stroke-neutral-300" />
                 </Link>
 
-                <div className="flex flow-row justify-between py-8 items-center">
+                <Link href="/terms-condition" className="flex flow-row justify-between items-center pt-8">
                     <div className="flex flow-row gap-3 items-center">
+                        <TermsIcon className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
+                        <span className="text-base">Terms & Condition</span>
+                    </div>
+
+                    <RightIcon className="w-7 stroke-neutral-300" />
+                </Link>
+
+                <div className="flex flow-row justify-between pt-7 items-center">
+                    <Link href={"/privacy-policy"} className="flex flow-row gap-3 items-center">
                         <PrivacyIcon className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
                         <span className="text-base">Privacy Policy</span>
-                    </div>
+                    </Link>
 
                     <RightIcon className="w-7 stroke-neutral-300" />
                 </div>
 
-                <div className="flex flow-row justify-between items-center">
+                <div className="flex flow-row justify-between pt-7 items-center">
+                    <Link href={"/about-us"} className="flex flow-row gap-3 items-center">
+                        <AboutUs className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
+                        <span className="text-base">About us</span>
+                    </Link>
+
+                    <RightIcon className="w-7 stroke-neutral-300" />
+                </div>
+
+                <div className="flex flow-row justify-between items-center pt-7">
                     <div className="flex flow-row gap-3 items-center">
                         <FollowIcon className="h-5 w-5 stroke-neutral-200" />
                         <span className="text-base">Follow us</span>
                     </div>
 
                     <div className="flex flex-row gap-3">
-                        <FacebookIcon className="fill-neutral-500" />
-                        {/* <TwitterIcon className='stroke-ne' /> */}
-                        <InstagramIcon className="stroke-neutral-500" />
-                        <WhastappIcon className="fill-neutral-500" />
+                        <Link href={"https://www.facebook.com/people/ArtEra-Pixel/61561813813190/"}>
+                            <FacebookIcon className="fill-neutral-500" />
+                        </Link>
+                        <Link href={"https://www.instagram.com/arterapixel7/"}>
+                            {/* <TwitterIcon className='stroke-ne' /> */}
+                            <InstagramIcon className="stroke-neutral-500" />
+                        </Link>
+
                         <LinkedIcon className="fill-neutral-500" />
                     </div>
                 </div>
@@ -175,6 +197,16 @@ export default function Page() {
             <div className="flex flex-col gap-1 justify-center w-full text-center">
                 <span className="text-[12px] text-neutral-400">App version 1.0.0</span>
                 <span className="text-[12px] text-neutral-400">Made with &#9829; in India</span>
+            </div>
+
+            <div className="flex flex-row justify-center items-center gap-3 mt-2">
+                {/* <Link href={"/about-us"} className="text-[14px] text-neutral-400 underline underline-offset-2">
+                    About us
+                </Link>
+
+                <Link href={"/terms-condition"} className="text-[14px] text-neutral-400 underline underline-offset-2">
+                    Terms & Condition
+                </Link> */}
             </div>
 
             <div className="h-28"></div>

@@ -72,6 +72,7 @@ export const formatPhoneNumber = (number) => {
 
 export function Frame1(props) {
     const {
+        style = { backgroundColor: "#000000", color: "#FFFFFF" },
         className = "w-[320px] h-[320px] mx-auto flex",
         onClick,
         mobileNumber = "1234567890",
@@ -89,8 +90,9 @@ export function Frame1(props) {
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
                                 <EmailIcon />
                             </span>
-                            {/* <div style={{ fontSize: "1.5px", lineHeight: "1.5", whiteSpace: "nowrap" }}>textnode</div> */}
-                            <span className="text-[1.5px] leading-3 font-bold pt-[1px]">{email}</span>
+                            <span className="text-[1.5px] leading-3 font-bold pt-[1px]" style={{ color: style.backgroundColor }}>
+                                {email}
+                            </span>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5">
@@ -121,9 +123,9 @@ export function Frame1(props) {
                                 </svg>
                             </span>
 
-                            <span className="text-[1.5px] leading-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</span>
-
-                            {/* <div className="text-[1.5px] font-bold pt-[1px]">{formatPhoneNumber(mobileNumber)}</div> */}
+                            <span className="text-[1.5px] leading-[1.5px] font-bold pt-[1px]" style={{ color: style.backgroundColor }}>
+                                {formatPhoneNumber(mobileNumber)}
+                            </span>
                         </div>
 
                         <div className="flex flex-row items-center gap-0.5">
@@ -131,13 +133,13 @@ export function Frame1(props) {
                                 <WebIcon className="h-[6px] w-[6px]" fill="#000000" />
                             </span>
 
-                            {/* <div style={{ fontSize: "1.5px", lineHeight: "1.5px", whiteSpace: "nowrap" }}>textnode</div> */}
-
-                            <div className="text-[1.5px] pt-[1px] leading-3 font-bold">{website}</div>
+                            <div className="text-[1.5px] pt-[1px] leading-3 font-bold" style={{ color: style.backgroundColor }}>
+                                {website}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="flex mx-auto w-full justify-center bg-black text-white mt-1">
+                    <div className="flex mx-auto w-full justify-center text-white mt-1" style={{ ...style }}>
                         <div className="flex flex-row py-[2.5px] items-center">
                             <div className="bg-white rounded-full p-0.5">
                                 <LocationIcon className="" height={6} width={6} />
