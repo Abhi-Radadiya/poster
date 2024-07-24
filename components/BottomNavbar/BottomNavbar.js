@@ -25,6 +25,7 @@ const BottomNav = () => {
         page === "/available-plan" ||
         page === "/terms-condition" ||
         page === "/privacy-policy" ||
+        page === "/delete-data" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
         page.startsWith("/image-selection/") ||
