@@ -11,6 +11,10 @@ body {
     font-weight: 400;
 }
 
+/* video::-webkit-media-controls {
+    opacity: 0.02 !important;
+} */
+
 /* styles/globals.css */
 .poppins-font {
     font-family: "Poppins", sans-serif;

@@ -27,7 +27,7 @@ export default function Page() {
 
                 <h2 className="text-xl font-semibold mb-2">Trademark</h2>
                 <p className="mb-4">
-                    ArtEra Pixel is registered trademark of Corporate Enterprise company located at 302, Harikrishna Arcade, Ambedkar Chowk, 150ft Ring Road, Rajkot.
+                    ArtEra Pixel is registered trademark of Corporate Enterprise company located at 203, 2nd Floor, Pride Plaza, Opp. JP Tower, Tagor Road, Rajkot-360002.
                 </p>
 
                 <h2 className="text-xl font-semibold mb-2">Collection of Information</h2>
@@ -37,10 +37,6 @@ export default function Page() {
                 </p>
 
                 <h2 className="text-xl font-semibold mb-2">Security</h2>
-                <p className="mb-4">
-                    I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no
-                    method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
-                </p>
                 <p className="mb-4">
                     In order to ensure data security, we will in consideration of appropriate technical possibilities, ensure that only authorized persons receive access to the
                     data for legally permissible purposes, protect stored or transmitted data against accidental or unlawful destruction, loss or unintended changes and
@@ -85,14 +81,12 @@ export default function Page() {
                 <h2 className="text-xl font-semibold mb-2">Opt-out from Data Collection and Inquiries</h2>
                 <p className="mb-4">
                     As a user, you may opt-out of all information collection by discontinuing your use of the Application or by disabling individual parts of the App or by
-                    informing us by e-mail:{" "}
-                    <a href="mailto:arterapixel7@gmail.com" className="text-blue-500 hover:underline">
-                        arterapixel7@gmail.com
-                    </a>
+                    informing us by e-mail:
+                    <span className="text-blue-500 hover:underline">arterapixel7@gmail.com</span>
                 </p>
                 <p className="mb-4">
                     Questions, comments and inquiries regarding this Privacy Policy and the personal data we have stored and processed about you are welcomed and should be
-                    addressed to{" "}
+                    addressed to
                     <a href="mailto:arterapixel7@gmail.com" className="text-blue-500 hover:underline">
                         arterapixel7@gmail.com
                     </a>
@@ -126,7 +120,7 @@ export default function Page() {
                 </p>
 
                 <p className="text-sm">
-                    Last update: <strong>1-08-2024</strong>
+                    Last update: <strong>01-08-2024</strong>
                 </p>
             </div>
         </div>

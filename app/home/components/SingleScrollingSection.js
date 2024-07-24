@@ -61,18 +61,20 @@ export default function SingleScrollingSection(props) {
             ) : (
                 <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2 px-4">
                     {imageData.data &&
-                        imageData.data.map((image, index) => (
-                            <Link href={`/image-selection/${image._id}`} key={index} onClick={() => handleImageClick(image)} className="first:-ml-1 mx-0.5 w-full">
-                                <Image
-                                    height={100}
-                                    width={100}
-                                    src={image.url}
-                                    alt={`Image ${index + 1}`}
-                                    className="h-[125px] min-w-[125px] rounded-lg"
-                                    style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
-                                />
-                            </Link>
-                        ))}
+                        imageData.data.map((image, index) => {
+                            return (
+                                <Link href={`/image-selection/${image._id}`} key={index} onClick={() => handleImageClick(image)} className="first:-ml-1 mx-0.5 w-full">
+                                    <Image
+                                        height={100}
+                                        width={100}
+                                        src={image.url}
+                                        alt={`Image ${index + 1}`}
+                                        className="h-[125px] min-w-[125px] rounded-lg"
+                                        style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
+                                    />
+                                </Link>
+                            );
+                        })}
                 </div>
             )}
         </>

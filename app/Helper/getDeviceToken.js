@@ -20,51 +20,42 @@ export const requestNotificationPermission = async (dispatch, setToken) => {
 };
 
 export const generateDeviceToken = (dispatch, setToken) => {
-    navigator.serviceWorker?.ready?.then((registration) => {
-        let serviceWorker;
-
-        if (registration.installing) {
-            serviceWorker = registration.installing;
-        } else if (registration.waiting) {
-            serviceWorker = registration.waiting;
-        } else if (registration.active) {
-            serviceWorker = registration.active;
-        }
-
-        if (serviceWorker?.state === "activated") {
-            setFirebaseToken(dispatch, serviceWorker, setToken);
-        } else {
-            serviceWorker.addEventListener("statechange", () => {
-                if (serviceWorker?.state === "activated") {
-                    setFirebaseToken(dispatch, serviceWorker, setToken);
-                }
-            });
-        }
-
-        const webFirebaseInstant = initializeApp(firebaseConfig);
-
-        const messagingInstance = getMessaging(webFirebaseInstant);
-
-        onMessage(messagingInstance, function (payload) {
-            console.log("payload message ==>", payload, registration);
-
-            const notificationTitle = payload?.notification.title;
-
-            const notificationOptions = {
-                body: payload?.notification?.body,
-
-                actions: [
-                    {
-                        action: "coffee-action",
-                        title: "Coffee",
-                        type: "button",
-                    },
-                ],
-            };
-
-            registration.showNotification(notificationTitle, notificationOptions);
-        });
-    });
+    // navigator.serviceWorker?.ready?.then((registration) => {
+    //     let serviceWorker;
+    //     if (registration.installing) {
+    //         serviceWorker = registration.installing;
+    //     } else if (registration.waiting) {
+    //         serviceWorker = registration.waiting;
+    //     } else if (registration.active) {
+    //         serviceWorker = registration.active;
+    //     }
+    //     if (serviceWorker?.state === "activated") {
+    //         setFirebaseToken(dispatch, serviceWorker, setToken);
+    //     } else {
+    //         serviceWorker.addEventListener("statechange", () => {
+    //             if (serviceWorker?.state === "activated") {
+    //                 setFirebaseToken(dispatch, serviceWorker, setToken);
+    //             }
+    //         });
+    //     }
+    //     const webFirebaseInstant = initializeApp(firebaseConfig);
+    //     const messagingInstance = getMessaging(webFirebaseInstant);
+    //     onMessage(messagingInstance, function (payload) {
+    //         console.log("payload message ==>", payload, registration);
+    //         const notificationTitle = payload?.notification.title;
+    //         const notificationOptions = {
+    //             body: payload?.notification?.body,
+    //             actions: [
+    //                 {
+    //                     action: "coffee-action",
+    //                     title: "Coffee",
+    //                     type: "button",
+    //                 },
+    //             ],
+    //         };
+    //         registration.showNotification(notificationTitle, notificationOptions);
+    //     });
+    // });
 };
 
 const setFirebaseToken = (dispatch, serviceWorker, setToken) => {

@@ -42,8 +42,10 @@ export default function Home() {
                     </>
                 ) : (
                     data
-                        .filter((el) => el.category !== "banner" && el.category !== "festival")
-                        .map((item) => <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />)
+                        ?.filter((el) => el.category !== "banner" && el.category !== "festival")
+                        ?.map((item) => (
+                            <SingleScrollingSection key={item.category} title={item.category} icon={<TimeWatch stroke={2} height={16} width={16} />} imageData={item} />
+                        ))
                 )}
             </div>
         </>

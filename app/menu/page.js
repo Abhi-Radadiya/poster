@@ -47,11 +47,11 @@ export default function Page() {
 
             <div className="px-4 pt-5 flex flex-row gap-4">
                 <Link href="/my-business" className="flex flex-col w-1/2 bg-white rounded-xl px-5 pb-[18px] pt-5 items-center">
-                    <Image src={BusinessCase} className="h-[40px] w-[40px] mb-1" />
+                    <Image src={BusinessCase} alt="My Business" className="h-[40px] w-[40px] mb-1" />
                     <span className="font-bold text-neutral-600 text-[16px]">My Businesses</span>
                 </Link>
                 <div className="flex flex-col w-1/2 bg-white rounded-xl px-5 items-center pt-5 pb-[18px]">
-                    <Image src={DownloadIcon3d} className="h-[40px] w-[40px] mb-1.5" />
+                    <Image src={DownloadIcon3d} alt="Download" className="h-[40px] w-[40px] mb-1.5" />
 
                     <span className="font-bold text-[16px] text-neutral-600">Download</span>
                 </div>
@@ -75,7 +75,7 @@ export default function Page() {
                         </div>
 
                         <div className="flex flex-col justify-center items-center w-[30%] pr-6 -mt-6">
-                            <Image src={gift3d} height={60} />
+                            <Image src={gift3d} height={60} alt="Coin" />
                             <span className="font-medium text-xl">20</span>
                             <span className="font-medium text-[12px] text-neutral-600 -mt-1">Earned coins</span>
                         </div>
@@ -86,16 +86,16 @@ export default function Page() {
             <span className="text-neutral-400 text-base px-5">Plans</span>
 
             <div className="bg-white mx-5 px-5 py-4 mt-2 rounded-xl mb-7">
-                <div className="flex flow-row justify-between items-center">
-                    <Link href="/available-plan">
+                <Link href="/available-plan">
+                    <div className="flex flow-row justify-between items-center">
                         <div className="flex flex-row gap-3 items-center cursor-pointer rounded">
                             <CopyIcon className="h-5 w-5 stroke-neutral-200" />
                             <span className="text-base">Available Plans</span>
                         </div>
-                    </Link>
 
-                    <RightIcon className="w-7 stroke-neutral-300" />
-                </div>
+                        <RightIcon className="w-7 stroke-neutral-300" />
+                    </div>
+                </Link>
             </div>
 
             <span className="text-neutral-400 text-base px-5">Help & Support</span>

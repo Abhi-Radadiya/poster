@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
-import CheckMark from "@/assets/check-mark.png";
 import { useImageData } from "@/context/ImageDataContext";
 
 export default function ImageGallery({ data }) {
@@ -37,18 +36,31 @@ export default function ImageGallery({ data }) {
 
             <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2 px-3 py-2">
                 {filteredData.map((subcategory, index) =>
-                    subcategory.data.map((image) => (
-                        <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-0 mx-0.5 w-full">
-                            <Image
-                                height={100}
-                                width={100}
-                                src={image.url}
-                                alt={`Image ${index + 1}`}
-                                className="h-[125px] min-w-[125px] rounded-xl"
-                                style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
-                            />
-                        </Link>
-                    ))
+                    subcategory.data.map((image) => {
+                        console.log("image ==>", image);
+
+                        return (
+                            <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-0 mx-0.5 w-full">
+                                {image.subcategory !== "video" ? (
+                                    <Image
+                                        height={100}
+                                        width={100}
+                                        src={image.url}
+                                        alt={`Image ${index + 1}`}
+                                        className="h-[125px] min-w-[125px] rounded-xl"
+                                        style={{ boxShadow: "0px 0px 0.5px 0.5px #d4d5d6" }}
+                                    />
+                                ) : (
+                                    <>
+                                        <video muted autoPlay={true} loop className="h-[125px] min-w-[125px] rounded-xl">
+                                            <source src="https://res.cloudinary.com/dfmrcxoqs/video/upload/v1721716552/b7kwp0qwshwseskkdowk.mp4" type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </>
+                                )}
+                            </Link>
+                        );
+                    })
                 )}
             </div>
         </div>
