@@ -63,7 +63,7 @@ export default function SingleScrollingSection(props) {
                     {imageData.data &&
                         imageData.data.map((image, index) => {
                             return (
-                                <Link href={`/image-selection/${image._id}`} key={index} onClick={() => handleImageClick(image)} className="first:-ml-1 mx-0.5 w-full">
+                                <Link href={`/image-selection/${image._id}`} key={index} onClick={() => handleImageClick(image)} className="first:-ml-1 py-0.5 mx-1 w-full">
                                     <Image
                                         height={100}
                                         width={100}

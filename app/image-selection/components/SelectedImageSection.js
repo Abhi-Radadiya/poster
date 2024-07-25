@@ -24,13 +24,11 @@ export default function SelectedImageSection(props) {
         arrows: false,
     };
 
-    console.log("imageDetails ==>", imageDetails);
-
     return (
         <>
             <div className="w-full flex justify-center mb-4">
                 <div className="relative h-[320px] w-[320px] bg-white leading-normal" ref={sectionRef}>
-                    {imageDetails.subcategory === "video" ? (
+                    {imageDetails?.subcategory === "video" ? (
                         <>
                             {/* <video
                                 height={100}

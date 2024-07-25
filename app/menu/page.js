@@ -18,8 +18,7 @@ import BusinessCase from "@/assets/business-case-3d.png";
 import DownloadIcon3d from "@/assets/download-3d.png";
 import Image from "next/image";
 import gift3d from "@/assets/gift-3d.png";
-// import coupencodeBg from "../../assets/coupen-backgroud.jpg";
-// import coupencodeBg from "@/assets/coupen-backgroud.jpg";
+import RefundIcon from "@/assets/refund.svg";
 
 export default function Page() {
     const whatsappNumber = "7433804998";
@@ -165,6 +164,15 @@ export default function Page() {
                     <Link href={"/about-us"} className="flex flow-row gap-3 items-center">
                         <AboutUs className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
                         <span className="text-base">About us</span>
+                    </Link>
+
+                    <RightIcon className="w-7 stroke-neutral-300" />
+                </div>
+
+                <div className="flex flow-row justify-between pt-7 items-center">
+                    <Link href={"/refund-policy"} className="flex flow-row gap-3 items-center">
+                        <RefundIcon className="h-5 w-5 stroke-[2px] stroke-neutral-200" />
+                        <span className="text-base">Refunds/Cancellations Policy</span>
                     </Link>
 
                     <RightIcon className="w-7 stroke-neutral-300" />

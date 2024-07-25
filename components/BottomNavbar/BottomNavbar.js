@@ -26,6 +26,7 @@ const BottomNav = () => {
         page === "/terms-condition" ||
         page === "/privacy-policy" ||
         page === "/delete-data" ||
+        page === "/about-us" ||
         page.startsWith("/edit-profile") ||
         page.startsWith("/add-business-details/") ||
         page.startsWith("/image-selection/") ||
@@ -35,7 +36,7 @@ const BottomNav = () => {
     }
 
     return (
-        <div className={`w-full px-5 pb-2 fixed h-[60px] bg-white flex items-center bottom-0 justify-between`}>
+        <div className={`w-full px-5 pb-2 fixed h-[60px] bg-white flex items-center bottom-0 justify-between max-w-3xl`}>
             <TrayItem
                 link="home"
                 label="home"

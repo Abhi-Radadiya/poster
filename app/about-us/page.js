@@ -1,9 +1,19 @@
 import React from "react";
+import RightArrowIcon from "@/assets/chevron-right.svg";
+import Link from "next/link";
 
 export default function page() {
     return (
         <div className="bg-gray-100 text-gray-900 p-6">
             <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <div className="flex flex-row items-center -mt-4 -ml-2 mb-2">
+                    <Link href="/menu" className="mr-2">
+                        <RightArrowIcon className="rotate-180 stroke-neutral-400" />
+                    </Link>
+
+                    <div className="-mr-1.5 mt-0.5 tracking-wider text-neutral-600 text-base font-bold">Back</div>
+                </div>
+
                 <h1 className="text-3xl font-bold mb-4">About Us</h1>
 
                 <p className="mb-6">
@@ -44,6 +54,22 @@ export default function page() {
                     Join us on this exciting journey and explore the endless possibilities of poster creation with Artera Pixel. {`Let's`} make every occasion special and every
                     message memorable with our exquisite poster designs.
                 </p>
+
+                <h2 className="text-2xl font-semibold mb-2">Reach us</h2>
+
+                <div className="mb-6 flex flex-col gap-2">
+                    <p>
+                        <strong>Contact No. :</strong> +91 74338 04998
+                    </p>
+
+                    <p>
+                        <strong>Email :</strong> arterapixel7@gmail.com
+                    </p>
+
+                    <p>
+                        <strong>Address :</strong> Pride plaza, Tagor Road, Rajkot - 360002, Gujarat
+                    </p>
+                </div>
 
                 <p className="text-lg font-semibold">Thank you for choosing Artera Pixel!</p>
             </div>

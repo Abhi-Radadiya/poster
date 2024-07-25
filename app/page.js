@@ -11,7 +11,7 @@ export default function Page() {
     const [token, setToken] = useState("xx");
 
     useEffect(() => {
-        navigator.serviceWorker?.register("/firebase-messaging-sw.js", { scope: "/" });
+        // navigator.serviceWorker?.register("/firebase-messaging-sw.js", { scope: "/" });
         getDeviceToken();
 
         // eslint-disable-next-line

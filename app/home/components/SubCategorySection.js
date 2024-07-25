@@ -40,7 +40,7 @@ export default function ImageGallery({ data }) {
                         console.log("image ==>", image);
 
                         return (
-                            <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-0 mx-0.5 w-full">
+                            <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-0 m-1 w-full">
                                 {image.subcategory !== "video" ? (
                                     <Image
                                         height={100}

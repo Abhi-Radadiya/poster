@@ -101,7 +101,7 @@ const PricingTable = () => {
                 <input className="w-full px-4 py-2.5 rounded-xl border shadow-md border-neutral-300" placeholder="Enter coupen code" />
             </div>
 
-            <div className="w-full mt-4 bg-white fixed bottom-0 py-4 -ml-4 px-4 rounded-t-2xl">
+            <div className="w-full mt-4 bg-white fixed bottom-0 py-4 -ml-4 px-4 rounded-t-2xl max-w-3xl">
                 <button className={`py-5 rounded-xl bg-blue-600 px-4 text-white font-bold uppercase text-base tracking-wider w-full`} onClick={onClick}>
                     {`Pay ${enabledPackage === "popular" ? "₹49/-" : "₹149/-"} & Subscribe`}
                 </button>
