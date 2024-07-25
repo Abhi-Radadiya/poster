@@ -9,6 +9,9 @@ body {
     font-family: "Poppins", sans-serif;
     color: #131126;
     font-weight: 400;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* video::-webkit-media-controls {
