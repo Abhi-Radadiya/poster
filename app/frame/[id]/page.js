@@ -65,7 +65,7 @@ export default function Page({ params }) {
         setHasLimitAddress(true);
     };
 
-    const [style, setstyle] = useState({ backgroundColor: "#000000", color: "#FFFFFF" });
+    const [style, setStyle] = useState({ backgroundColor: "#000000", color: "#FFFFFF" });
 
     const [showCOlor, setShowCOlor] = useState(false);
 
@@ -97,7 +97,7 @@ export default function Page({ params }) {
             </div>
 
             {showCOlor ? (
-                <ColorSelection setstyle={setstyle} />
+                <ColorSelection setStyle={setStyle} />
             ) : (
                 <InputForm setDetails={setDetails} details={details} id={id} setAddress={setAddress} hasLimitAddress={hasLimitAddress} handleSave={handleSave} />
             )}

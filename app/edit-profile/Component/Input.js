@@ -2,7 +2,7 @@ import React from "react";
 import "./styes.css";
 
 export default function Input(props) {
-    const { label, placeholder, value, disabled, icon, handleChange } = props;
+    const { label, placeholder, value, disabled, icon, handleChange, type = "search" } = props;
 
     return (
         <>
@@ -17,7 +17,7 @@ export default function Input(props) {
                             onChange={handleChange}
                             placeholder={placeholder}
                             disabled={disabled}
-                            type="search"
+                            type={type}
                             className={`input ${icon ? " pl-10" : "pl-2"}`}
                             value={value ?? ""}
                         />

@@ -14,7 +14,7 @@ export default function Page() {
     const { imageData } = useImageData();
     const sectionRef = useRef();
 
-    const [style, setstyle] = useState({ backgroundColor: "#000000", color: "#FFFFFF" });
+    const [style, setStyle] = useState({ backgroundColor: "#000000", color: "#FFFFFF" });
 
     const [showCOlor, setShowCOlor] = useState(false);
 
@@ -63,7 +63,7 @@ export default function Page() {
                 <span className="text-base">Edit color</span>
             </div>
 
-            {showCOlor ? <ColorSelection setstyle={setstyle} /> : <RecommendationSection imageDetails={imageData} />}
+            {showCOlor ? <ColorSelection style={style} setStyle={setStyle} /> : <RecommendationSection imageDetails={imageData} />}
 
             {/* {showLoginPopup && <MakeLoginPopup />} */}
         </>

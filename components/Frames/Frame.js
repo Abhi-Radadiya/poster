@@ -88,7 +88,7 @@ export function Frame1(props) {
                     <div className="flex flex-row items-center justify-between w-full px-4">
                         <div className="flex flex-row items-center gap-0.5">
                             <span className="border-[0.5px] border-black p-0.5 rounded-full">
-                                <EmailIcon />
+                                <EmailIcon fill={style.color} />
                             </span>
                             <span className="text-[1.5px] leading-3 font-bold pt-[1px]" style={{ color: style.backgroundColor }}>
                                 {email}
