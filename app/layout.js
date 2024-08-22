@@ -14,8 +14,8 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-                <meta name="google-adsense-account" content="ca-pub-8529977313104602" />
-                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-QGCYX6BL4J" />
+                <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8529977313104602" crossorigin="anonymous" />
+                {/* <Script async src="https://www.googletagmanager.com/gtag/js?id=G-QGCYX6BL4J" />
                 <Script id="google-analytics" strategy="afterInteractive">
                     {`
                         window.dataLayer = window.dataLayer || [];
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 
                         gtag('config', 'G-QGCYX6BL4J');
                     `}
-                </Script>
+                </Script> */}
             </head>
             <body className="bg-[#efefef73]">
                 <ClientProvider>
