@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import ProfileIcon from "@/assets/profile.svg";
 import TermsIcon from "@/assets/terms.svg";
 import CopyIcon from "@/assets/copy.svg";
@@ -19,11 +21,28 @@ import DownloadIcon3d from "@/assets/download-3d.png";
 import Image from "next/image";
 import gift3d from "@/assets/gift-3d.png";
 import RefundIcon from "@/assets/refund.svg";
+import { axiosInstance } from "@/APIHelper/axios";
 
 export default function Page() {
     const whatsappNumber = "7433804998";
     const message = "Hello, I would like to connect with an expert.";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    useEffect(() => {
+        fetchBusinessDetails();
+    }, []);
+
+    const [profileDetails, setProfileDetails] = useState({});
+
+    const fetchBusinessDetails = async () => {
+        try {
+            const response = await axiosInstance.get("/user/business");
+
+            setProfileDetails(response.data.profile);
+        } catch (error) {
+            console.log(`error ==>`, error);
+        }
+    };
 
     return (
         <>
@@ -34,8 +53,8 @@ export default function Page() {
                     </span>
 
                     <div className="flex flex-col mt-1">
-                        <span className="font-medium text-[20px] text-neutral-600">Rushit infoteck</span>
-                        <span className="font-normal text-[16px] text-neutral-400 tracking-wide">+91 8888 88 888</span>
+                        <span className="font-medium text-[20px] text-neutral-600">{profileDetails?.user?.name}</span>
+                        <span className="font-normal text-[16px] text-neutral-400 tracking-wide">{profileDetails?.user?.mobileNumber}</span>
                     </div>
                 </Link>
 

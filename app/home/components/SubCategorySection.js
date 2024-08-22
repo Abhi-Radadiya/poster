@@ -37,8 +37,6 @@ export default function ImageGallery({ data }) {
             <div className="flex flex-row overflow-auto w-full no-scrollbar mb-2 px-3 py-2">
                 {filteredData.map((subcategory, index) =>
                     subcategory.data.map((image) => {
-                        console.log("image ==>", image);
-
                         return (
                             <Link href={`/image-selection/${image._id}`} onClick={() => handleImageClick(image)} key={image._id} className="first:-ml-0 m-1 w-full">
                                 {image.subcategory !== "video" ? (

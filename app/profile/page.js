@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ShareIcon from "@/assets/share.svg";
 import poster from "@/assets/demo-poster-header.jpg";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import { Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, MobilIcon } from "@/com
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import EmailIcon from "./Email.svg";
+import { axiosInstance } from "@/APIHelper/axios";
 
 export default function Page() {
     const { push } = useRouter();
@@ -30,13 +31,30 @@ export default function Page() {
         }
     };
 
+    useEffect(() => {
+        fetchBusinessDetails();
+    }, []);
+
+    const [profileDetails, setProfileDetails] = useState({});
+
+    const fetchBusinessDetails = async () => {
+        try {
+            const response = await axiosInstance.get("/user/business");
+
+            setProfileDetails(response.data.profile);
+        } catch (error) {
+            console.log(`error ==>`, error);
+        }
+    };
+
     return (
         <>
-            <div className="flex flex-row justify-between w-full sticky top-0 pt-5 pb-3 px-4 bg-white" onClick={handleShare}>
-                <span className="font-medium text-neutral-600">Business Profile</span>
-                <ShareIcon width={20} height={20} />
-            </div>
-            {/* {!frameDetails ? (
+            <div className="bg-neutral-50">
+                <div className="flex flex-row justify-between w-full sticky top-0 pt-5 pb-3 px-4 bg-white" onClick={handleShare}>
+                    <span className="font-medium text-neutral-600">Business Profile</span>
+                    <ShareIcon width={20} height={20} />
+                </div>
+                {/* {!frameDetails ? (
                 <div className="justify-center flex w-full m-auto items-center h-[80vh] flex-col">
                     <div className="font-bold">Please login to see profile</div>
 
@@ -47,72 +65,72 @@ export default function Page() {
                     </div>
                 </div>
             ) : ( */}
-            <>
-                <div className="px-4 bg-neutral-50">
-                    <div className="flex flex-row items-center gap-3 pt-5">
-                        <Image src={poster} className="rounded-xl h-16 w-16" alt="img" />
+                <>
+                    <div className="px-4 bg-neutral-50">
+                        <div className="flex flex-row items-center gap-3 pt-5">
+                            <Image src={poster} className="rounded-xl h-16 w-16" alt="img" />
 
-                        <div className="flex flex-col gap-0.5">
-                            <span className="font-medium text-[16px] capitalize text-neutral-600">Rushit info tech</span>
-                            <span className="font-light text-[13px] capitalize text-neutral-400 tracking-wide">Network marketing industry</span>
+                            <div className="flex flex-col gap-0.5">
+                                <span className="font-medium text-[16px] capitalize text-neutral-600">{profileDetails?.business?.businessName}</span>
+                                <span className="font-light text-[13px] capitalize text-neutral-400 tracking-wide">{profileDetails?.user?.industry}</span>
+                            </div>
                         </div>
+
+                        <div className="flex flex-row items-center gap-2 mt-5">
+                            <EmailIcon width={15} height={15} />
+                            <span className="text-neutral-600 font-normal text-[13px]">{profileDetails?.business?.email}</span>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-2 mt-4">
+                            <Call width={15} height={15} fill="#525252" stroke="#525252" className="mb-1" />
+                            <span className="text-neutral-600 font-normal text-[13px]">{profileDetails?.business?.phoneNumber}</span>
+                        </div>
+
+                        <Link href="/edit-business-details">
+                            <button className="bg-neutral-200 text-neutral-800 py-1.5 px-2.5 rounded-xl font-medium text-[13px] my-3">Edit Business Profile</button>
+                        </Link>
                     </div>
 
-                    <div className="flex flex-row items-center gap-2 mt-5">
-                        {/* <Email className="h-4 w-4" fill="#525252" /> */}
-                        <EmailIcon width={15} height={15} />
-                        <span className="text-neutral-600 font-normal text-[13px]">rushirpatoliya22@gmail.com</span>
-                    </div>
+                    <div className="px-4 pt-3 flex flex-row justify-between w-full items-center bg-white rounded-t-2xl">
+                        <div className="flex flex-row gap-1.5 items-center">
+                            <span className="rounded-full bg-[#efefef73] p-2">
+                                <Grid className="rounded-full h-5 w-5 z-10" />
+                            </span>
 
-                    <div className="flex flex-row items-center gap-2 mt-4">
-                        {/* <Call className="h-4 p-[1px] w-4" fill="#525252" stroke="#525252" /> */}
+                            <div className="">
+                                <span className="font-medium text-neutral-700">Business Frames</span>
 
-                        <Call width={15} height={15} fill="#525252" stroke="#525252" className="mb-1" />
-                        <span className="text-neutral-600 font-normal text-[13px]">7485964163</span>
-                    </div>
-
-                    <Link href="/edit-business-details">
-                        <button className="bg-neutral-200 text-neutral-800 py-1.5 px-2.5 rounded-xl font-medium text-[13px] my-3">Edit Business Profile</button>
-                    </Link>
-                </div>
-                <div className="px-4 pt-3 flex flex-row justify-between w-full items-center bg-white rounded-t-2xl">
-                    <div className="flex flex-row gap-1.5 items-center">
-                        <span className="rounded-full bg-[#efefef73] p-2">
-                            <Grid className="rounded-full h-5 w-5 z-10" />
-                        </span>
-
-                        <div className="">
-                            <span className="font-medium text-neutral-700">Business Frames</span>
-
-                            <div className="flex flex-row gap-2 -mt-0.5 items-center">
-                                <Lock className="h-3 w-3" />
-                                <span className="-ml-1 font-normal capitalize pt-0.5 text-[13px] text-neutral-400 tracking-wide">Private for you</span>
+                                <div className="flex flex-row gap-2 -mt-0.5 items-center">
+                                    <Lock className="h-3 w-3" />
+                                    <span className="-ml-1 font-normal capitalize pt-0.5 text-[13px] text-neutral-400 tracking-wide">Private for you</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="flex flex-row overflow-x-auto gap-4 pt-4 pb-32 px-4 bg-white">
-                    <div className="scale-[1]">
-                        <Frame1 onClick={() => push("/frame/1")} {...frameDetails} />
+
+                    <div className="flex flex-row overflow-x-auto gap-4 pt-4 pb-32 px-4 bg-white">
+                        <div className="scale-[1]">
+                            <Frame1 onClick={() => push("/frame/1")} {...frameDetails} />
+                        </div>
+                        <div className="scale-[1]">
+                            <Frame2 onClick={() => push("/frame/2")} {...frameDetails} />
+                        </div>
+                        <div className="scale-[1]">
+                            <Frame3 onClick={() => push("/frame/3")} {...frameDetails} />
+                        </div>
+                        <div className="scale-[1]">
+                            <Frame4 onClick={() => push("/frame/4")} {...frameDetails} />
+                        </div>
+                        <div className="scale-[1]">
+                            <Frame5 onClick={() => push("/frame/5")} {...frameDetails} />
+                        </div>
+                        <div className="scale-[1]">
+                            <Frame6 onClick={() => push("/frame/6")} {...frameDetails} />
+                        </div>
                     </div>
-                    <div className="scale-[1]">
-                        <Frame2 onClick={() => push("/frame/2")} {...frameDetails} />
-                    </div>
-                    <div className="scale-[1]">
-                        <Frame3 onClick={() => push("/frame/3")} {...frameDetails} />
-                    </div>
-                    <div className="scale-[1]">
-                        <Frame4 onClick={() => push("/frame/4")} {...frameDetails} />
-                    </div>
-                    <div className="scale-[1]">
-                        <Frame5 onClick={() => push("/frame/5")} {...frameDetails} />
-                    </div>
-                    <div className="scale-[1]">
-                        <Frame6 onClick={() => push("/frame/6")} {...frameDetails} />
-                    </div>
-                </div>
-            </>
-            {/* )} */}
+                </>
+                {/* )} */}
+            </div>
         </>
     );
 }

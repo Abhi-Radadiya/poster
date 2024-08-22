@@ -2,28 +2,10 @@
 
 import Image from "next/image";
 import CalenderIcon from "../../../assets/calendar-icon.svg";
-import image from "../../../assets/demo-poster-header.jpg";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useImageData } from "@/context/ImageDataContext";
 import { format } from "date-fns";
-// import { format } from "date-fns";
-
-const data = [
-    { date: "18 Apr", image: [image, image, image, image, image] },
-    { date: "19 Apr", image: [image, image, image] },
-    { date: "20 Apr", image: [] },
-    { date: "21 Apr", image: [image, image, image, image, image, image, image] },
-    { date: "22 Apr", image: [] },
-    { date: "23 Apr", image: [image, image, image] },
-    { date: "24 Apr", image: [image, image, image] },
-    { date: "25 Apr", image: [image, image, image, image, image] },
-    { date: "26 Apr", image: [image, image, image] },
-    { date: "27 Apr", image: [] },
-    { date: "28 Apr", image: [image, image, image, image, image, image, image] },
-    { date: "29 Apr", image: [] },
-    { date: "30 Apr", image: [image, image, image] },
-];
 
 export default function Page(props) {
     const { poster } = props;
